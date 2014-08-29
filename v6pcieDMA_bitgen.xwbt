@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=/home/vladimir/NEWDMA/v6pcieDMA.ncd
+OUTFILE=/home/vladimir/NEWDMA/v6pcieDMA.bit
+FAMILY=Virtex6
+PART=xc6vlx240t-1ff1156
+WORKINGDIR=/home/vladimir/NEWDMA
+LICENSE=ISE
+USER_INFO=__0_0_0
