@@ -1824,11 +1824,11 @@ entity PCIe_UserLogic_00 is
    --  reg13_tv: in std_logic; 
    --  reg14_td: in std_logic_vector(31 downto 0); 
   --  reg14_tv: in std_logic; 
---    rst_i: in std_logic; 
+    rst_i: in std_logic; 
     user_logic_cw_ce: in std_logic := '1'; 
     user_logic_cw_clk: in std_logic; 
-    bram_rd_addr: out std_logic_vector(11 downto 0); 
-    bram_wr_addr: out std_logic_vector(11 downto 0); 
+    bram_rd_addr: out std_logic_vector(15 downto 0); 
+    bram_wr_addr: out std_logic_vector(15 downto 0); 
     bram_wr_din: out std_logic_vector(63 downto 0); 
     bram_wr_en: out std_logic_vector(7 downto 0); 
     fifo_rd_en: out std_logic; 
@@ -2257,8 +2257,8 @@ architecture structural of PCIe_UserLogic_00 is
       to_register8_dout: in std_logic_vector(31 downto 0); 
       to_register9_dout: in std_logic_vector(31 downto 0); 
       to_register_dout: in std_logic_vector(31 downto 0); 
-      bram_rd_addr: out std_logic_vector(11 downto 0); 
-      bram_wr_addr: out std_logic_vector(11 downto 0); 
+      bram_rd_addr: out std_logic_vector(15 downto 0); 
+      bram_wr_addr: out std_logic_vector(15 downto 0); 
       bram_wr_din: out std_logic_vector(63 downto 0); 
       bram_wr_en: out std_logic_vector(7 downto 0); 
       fifo_rd_en: out std_logic; 
@@ -2913,9 +2913,9 @@ architecture structural of PCIe_UserLogic_00 is
   signal x_x60: std_logic;
   signal x_x61: std_logic_vector(31 downto 0);
   signal x_x62: std_logic;
-  signal x_x63: std_logic_vector(11 downto 0);
+  signal x_x63: std_logic_vector(15 downto 0);
   signal x_x64: std_logic_vector(63 downto 0);
-  signal x_x65: std_logic_vector(11 downto 0);
+  signal x_x65: std_logic_vector(15 downto 0);
   signal x_x66: std_logic_vector(63 downto 0);
   signal x_x67: std_logic_vector(7 downto 0);
   signal x_x68: std_logic;
@@ -2986,7 +2986,7 @@ begin
   -- x_x58 <= reg13_tv;
   -- x_x61 <= reg14_td;
   -- x_x62 <= reg14_tv;
---  x_x81 <= rst_i;
+  x_x81 <= rst_i;
   x_x68 <= user_logic_cw_ce;
   x_x69 <= user_logic_cw_clk;
   bram_rd_addr <= x_x63;

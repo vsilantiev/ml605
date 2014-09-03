@@ -117,7 +117,7 @@ package abb64Package is
 
   ---       Block RAM address bus width.  Variation requires BRAM core regeneration.
   Constant  C_PRAM_AWIDTH         : integer  range 8 to 28
-                                  :=   12;
+                                  :=   16;
 
   ---       Width for Interrupt generation counter
   Constant  C_CNT_GINT_WIDTH      : integer      :=  30;
@@ -864,10 +864,10 @@ package abb64Package is
   constant USE_OPTO_LINKS          : boolean   := FALSE;
 
   -- Implement interrupt generator (IG)
-  constant IMP_INT_GENERATOR       : boolean   := TRUE;
+  constant IMP_INT_GENERATOR       : boolean   := FALSE;
 
   -- interrupt type: cfg(aka legacy) or MSI
-  constant USE_CFG_INTERRUPT       : boolean   := TRUE;
+  constant USE_CFG_INTERRUPT       : boolean   := FALSE;
 
   -- Busmacro insertion for partial reconfigurability
   constant INSERT_BUSMACRO         : boolean   := FALSE;

@@ -45,7 +45,7 @@ ENTITY cntr_11_0_341fbb8cfa0e669e IS
     clk : IN STD_LOGIC;
     ce : IN STD_LOGIC;
     sinit : IN STD_LOGIC;
-    q : OUT STD_LOGIC_VECTOR(11 DOWNTO 0)
+    q : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
   );
 END cntr_11_0_341fbb8cfa0e669e;
 
@@ -56,7 +56,7 @@ COMPONENT wrapped_cntr_11_0_341fbb8cfa0e669e
     clk : IN STD_LOGIC;
     ce : IN STD_LOGIC;
     sinit : IN STD_LOGIC;
-    q : OUT STD_LOGIC_VECTOR(11 DOWNTO 0)
+    q : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
   );
 END COMPONENT;
 
@@ -83,7 +83,7 @@ END COMPONENT;
       c_sinit_val => "0",
       c_thresh0_value => "1",
       c_verbosity => 0,
-      c_width => 12,
+      c_width => 16,
       c_xdevicefamily => "virtex6"
     );
 -- synthesis translate_on
@@ -152,7 +152,7 @@ ENTITY ila_1_05_a_b6735eb4b876dee5 IS
   port (
     CONTROL: inout std_logic_vector(35 downto 0);
     CLK: in std_logic;
-    TRIG0: in std_logic_vector(11 downto 0);
+    TRIG0: in std_logic_vector(15 downto 0);
     TRIG1: in std_logic_vector(63 downto 0);
     TRIG2: in std_logic_vector(0 to 0);
     TRIG3: in std_logic_vector(0 to 0);
@@ -2511,7 +2511,7 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 entity xlchipscope is
     port (
-	trig0 : in std_logic_vector(12-1 downto 0);
+	trig0 : in std_logic_vector(16-1 downto 0);
 	trig1 : in std_logic_vector(64-1 downto 0);
 	trig2 : in std_logic_vector(1-1 downto 0);
 	trig3 : in std_logic_vector(1-1 downto 0);
@@ -2537,7 +2537,7 @@ architecture behavior of xlchipscope is
     signal control  : std_logic_vector (35 downto 0);
     component ila_1_05_a_b6735eb4b876dee5
     port (control     : inout std_logic_vector(35 downto 0);
-	trig0 : in std_logic_vector(12-1 downto 0);
+	trig0 : in std_logic_vector(16-1 downto 0);
 	trig1 : in std_logic_vector(64-1 downto 0);
 	trig2 : in std_logic_vector(1-1 downto 0);
 	trig3 : in std_logic_vector(1-1 downto 0);
@@ -2635,8 +2635,8 @@ entity user_logic is
     fifo_wr_full_x0: in std_logic; 
     fifo_wr_pfull_x0: in std_logic; 
     rst_i: in std_logic; 
-    bram_rd_addr: out std_logic_vector(11 downto 0); 
-    bram_wr_addr: out std_logic_vector(11 downto 0); 
+    bram_rd_addr: out std_logic_vector(15 downto 0); 
+    bram_wr_addr: out std_logic_vector(15 downto 0); 
     bram_wr_din: out std_logic_vector(63 downto 0); 
     bram_wr_en: out std_logic_vector(7 downto 0); 
     data_in: out std_logic_vector(31 downto 0); 
@@ -2709,12 +2709,12 @@ architecture structural of user_logic is
   attribute core_generation_info: string;
   attribute core_generation_info of structural : architecture is "PCIe_UserLogic_00,sysgen_core,{clock_period=5.00000000,clocking=Clock_Enables,compilation=NGC_Netlist,sample_periods=1.00000000000,testbench=0,total_blocks=351,xilinx_chipscope_block=1,xilinx_constant_block_block=23,xilinx_counter_block=1,xilinx_gateway_in_block=44,xilinx_gateway_out_block=39,xilinx_inverter_block=2,xilinx_logical_block_block=1,xilinx_register_block=89,xilinx_shared_memory_based_from_register_block=62,xilinx_shared_memory_based_to_register_block=62,xilinx_subsystem_generator_block=1,xilinx_system_generator_block=2,xilinx_type_converter_block=14,}";
 
-  signal bram_addr: std_logic_vector(11 downto 0);
-  signal bram_addr_x0: std_logic_vector(11 downto 0);
+  signal bram_addr: std_logic_vector(15 downto 0);
+  signal bram_addr_x0: std_logic_vector(15 downto 0);
   signal bram_data: std_logic_vector(63 downto 0);
-  signal bram_rd_addr_net: std_logic_vector(11 downto 0);
+  signal bram_rd_addr_net: std_logic_vector(15 downto 0);
   signal bram_rd_dout_net: std_logic_vector(63 downto 0);
-  signal bram_wr_addr_net: std_logic_vector(11 downto 0);
+  signal bram_wr_addr_net: std_logic_vector(15 downto 0);
   signal bram_wr_din_net: std_logic_vector(63 downto 0);
   signal bram_wr_en_net: std_logic_vector(7 downto 0);
   signal ce_1_sg_x0: std_logic;
@@ -2752,7 +2752,7 @@ architecture structural of user_logic is
   signal convert6_dout_net: std_logic;
   signal convert7_dout_net: std_logic;
   signal convert8_dout_net: std_logic;
-  signal counter4_op_net: std_logic_vector(11 downto 0);
+  signal counter4_op_net: std_logic_vector(15 downto 0);
   signal data_in_net: std_logic_vector(31 downto 0);
   signal data_in_x0_net: std_logic;
   signal data_in_x10_net: std_logic_vector(31 downto 0);
@@ -2849,9 +2849,9 @@ architecture structural of user_logic is
   signal tx_en_in127_q_net: std_logic;
   signal tx_en_in128_q_net: std_logic_vector(31 downto 0);
   signal tx_en_in12_q_net: std_logic_vector(31 downto 0);
-  signal tx_en_in17_q_net: std_logic_vector(11 downto 0);
+  signal tx_en_in17_q_net: std_logic_vector(15 downto 0);
   signal tx_en_in18_q_net: std_logic_vector(7 downto 0);
-  signal tx_en_in30_q_net: std_logic_vector(11 downto 0);
+  signal tx_en_in30_q_net: std_logic_vector(15 downto 0);
   signal tx_en_in4_q_net: std_logic;
   signal tx_en_in52_q_net: std_logic_vector(31 downto 0);
   signal tx_en_in58_q_net: std_logic;
@@ -3480,7 +3480,7 @@ begin
     generic map (
       core_name0 => "cntr_11_0_341fbb8cfa0e669e",
       op_arith => xlUnsigned,
-      op_width => 12
+      op_width => 16
     )
     port map (
       ce => ce_1_sg_x0,
@@ -3619,8 +3619,8 @@ begin
 
   tx_en_in11: entity work.xlregister
     generic map (
-      d_width => 12,
-      init_value => b"000000000000"
+      d_width => 16,
+      init_value => b"0000000000000000"
     )
     port map (
       ce => ce_1_sg_x0,
@@ -3899,8 +3899,8 @@ begin
 
   tx_en_in15: entity work.xlregister
     generic map (
-      d_width => 12,
-      init_value => b"000000000000"
+      d_width => 16,
+      init_value => b"0000000000000000"
     )
     port map (
       ce => ce_1_sg_x0,
@@ -3913,8 +3913,8 @@ begin
 
   tx_en_in16: entity work.xlregister
     generic map (
-      d_width => 12,
-      init_value => b"000000000000"
+      d_width => 16,
+      init_value => b"0000000000000000"
     )
     port map (
       ce => ce_1_sg_x0,
@@ -3927,8 +3927,8 @@ begin
 
   tx_en_in17: entity work.xlregister
     generic map (
-      d_width => 12,
-      init_value => b"000000000000"
+      d_width => 16,
+      init_value => b"0000000000000000"
     )
     port map (
       ce => ce_1_sg_x0,
@@ -3955,8 +3955,8 @@ begin
 
   tx_en_in19: entity work.xlregister
     generic map (
-      d_width => 12,
-      init_value => b"000000000000"
+      d_width => 16,
+      init_value => b"0000000000000000"
     )
     port map (
       ce => ce_1_sg_x0,
@@ -4137,8 +4137,8 @@ begin
 
   tx_en_in30: entity work.xlregister
     generic map (
-      d_width => 12,
-      init_value => b"000000000000"
+      d_width => 16,
+      init_value => b"0000000000000000"
     )
     port map (
       ce => ce_1_sg_x0,

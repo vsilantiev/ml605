@@ -15,14 +15,87 @@
 
   <!--                                                          -->
 
-  <!-- Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved. -->
+  <!-- Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved. -->
 
   <version xmlns="http://www.xilinx.com/XMLSchema">11.1</version>
 
   <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="user_logic_cw.xise"/>
 
-  <files xmlns="http://www.xilinx.com/XMLSchema"/>
+  <files xmlns="http://www.xilinx.com/XMLSchema">
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="_ngo"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/xst.xmsgs"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGDBUILD_LOG" xil_pn:name="user_logic_cw.bld"/>
+    <file xil_pn:fileType="FILE_CMD_LOG" xil_pn:name="user_logic_cw.cmd_log"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name="user_logic_cw.lso"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGC" xil_pn:name="user_logic_cw.ngc"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGR" xil_pn:name="user_logic_cw.ngr"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="user_logic_cw.prj"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_STX" xil_pn:name="user_logic_cw.stx"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_REPORT" xil_pn:name="user_logic_cw.syr"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="user_logic_cw.xst"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="user_logic_cw_ngdbuild.xrpt"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="user_logic_cw_summary.html"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="user_logic_cw_xst.xrpt"/>
+    <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="webtalk_pn.xml"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xlnx_auto_0_xdb"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xst"/>
+  </files>
 
-  <transforms xmlns="http://www.xilinx.com/XMLSchema"/>
+  <transforms xmlns="http://www.xilinx.com/XMLSchema">
+    <transform xil_pn:end_ts="1409725431" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="-6614961940453914252" xil_pn:start_ts="1409725431">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1409725431" xil_pn:name="TRAN_regenerateCores" xil_pn:prop_ck="-963355860066359007" xil_pn:start_ts="1409725431">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1409725431" xil_pn:name="TRAN_SubProjectAbstractToPreProxy" xil_pn:start_ts="1409725431">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1409725432" xil_pn:name="TRAN_xawsTohdl" xil_pn:prop_ck="7639422255320978724" xil_pn:start_ts="1409725431">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1409725432" xil_pn:name="TRAN_SubProjectPreToStructuralProxy" xil_pn:prop_ck="15701343915878886" xil_pn:start_ts="1409725432">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1409725432" xil_pn:name="TRAN_platgen" xil_pn:prop_ck="-5544731977697423573" xil_pn:start_ts="1409725432">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1409725440" xil_pn:in_ck="5050854991966879057" xil_pn:name="TRANEXT_xstsynthesize_virtex6" xil_pn:prop_ck="4240356923805098839" xil_pn:start_ts="1409725432">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
+      <outfile xil_pn:name="user_logic_cw.lso"/>
+      <outfile xil_pn:name="user_logic_cw.ngc"/>
+      <outfile xil_pn:name="user_logic_cw.ngr"/>
+      <outfile xil_pn:name="user_logic_cw.prj"/>
+      <outfile xil_pn:name="user_logic_cw.stx"/>
+      <outfile xil_pn:name="user_logic_cw.syr"/>
+      <outfile xil_pn:name="user_logic_cw.xst"/>
+      <outfile xil_pn:name="user_logic_cw_xst.xrpt"/>
+      <outfile xil_pn:name="webtalk_pn.xml"/>
+      <outfile xil_pn:name="xst"/>
+    </transform>
+    <transform xil_pn:end_ts="1409725440" xil_pn:in_ck="-5120846078015523023" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="-3536238383819209511" xil_pn:start_ts="1409725440">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1409725781" xil_pn:in_ck="3088206902750069884" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="-5422475409615784619" xil_pn:start_ts="1409725775">
+      <status xil_pn:value="FailedRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="_ngo"/>
+      <outfile xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
+      <outfile xil_pn:name="user_logic_cw.bld"/>
+      <outfile xil_pn:name="user_logic_cw_ngdbuild.xrpt"/>
+    </transform>
+  </transforms>
 
 </generated_project>

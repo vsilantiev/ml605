@@ -470,8 +470,8 @@ entity user_logic_cw is
     to_register8_dout: in std_logic_vector(31 downto 0); 
     to_register9_dout: in std_logic_vector(31 downto 0); 
     to_register_dout: in std_logic_vector(31 downto 0); 
-    bram_rd_addr: out std_logic_vector(11 downto 0); 
-    bram_wr_addr: out std_logic_vector(11 downto 0); 
+    bram_rd_addr: out std_logic_vector(15 downto 0); 
+    bram_wr_addr: out std_logic_vector(15 downto 0); 
     bram_wr_din: out std_logic_vector(63 downto 0); 
     bram_wr_en: out std_logic_vector(7 downto 0); 
     fifo_rd_en: out std_logic; 
@@ -643,9 +643,9 @@ architecture structural of user_logic_cw is
   attribute optimize_primitives of xlpersistentdff: component is false;
   attribute dont_touch of xlpersistentdff: component is true;
 
-  signal bram_rd_addr_net: std_logic_vector(11 downto 0);
+  signal bram_rd_addr_net: std_logic_vector(15 downto 0);
   signal bram_rd_dout_net: std_logic_vector(63 downto 0);
-  signal bram_wr_addr_net: std_logic_vector(11 downto 0);
+  signal bram_wr_addr_net: std_logic_vector(15 downto 0);
   signal bram_wr_din_net: std_logic_vector(63 downto 0);
   signal bram_wr_en_net: std_logic_vector(7 downto 0);
   signal ce_1_sg_x0: std_logic;

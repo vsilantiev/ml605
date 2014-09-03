@@ -87,7 +87,7 @@ architecture Behavioral of v6pcieDMA is
 			 -- data ADC to BRAM
 			 bram_wr_din			  : out std_logic_vector(63 downto 0); -- ADC to BRAM data
 			 -- addr for data ADC to BRAM
-			 bram_wr_addr			  : out std_logic_vector(11 downto 0); -- for brma
+			 bram_wr_addr			  : out std_logic_vector(15 downto 0); -- for brma
 			 -- wr_en ???
 			-- bram_wr_en				  : out std_logic_vector(7 downto 0);
 			-- User reg write PC to adc logic
@@ -151,7 +151,7 @@ architecture Behavioral of v6pcieDMA is
 			reg14_rd: out std_logic_vector(31 downto 0); 
 			reg14_rv: out std_logic; 
 			
-			reset	  : in std_logic;
+			--reset	  : in std_logic;
 			strobe_adc : out std_logic;
 			-- IRQ
 			user_int_1o: out std_logic; 
@@ -215,10 +215,10 @@ end component;
   ---  reg13_tv: in std_logic; 
   ---  reg14_td: in std_logic_vector(31 downto 0); 
   ---  reg14_tv: in std_logic; 
-    --rst_i: in std_logic; 
+    rst_i: in std_logic; 
     user_logic_cw_ce: in std_logic := '1'; 
     user_logic_cw_clk: in std_logic; 
-    bram_rd_addr: out std_logic_vector(11 downto 0); 
+    bram_rd_addr: out std_logic_vector(15 downto 0); 
     --bram_wr_addr: out std_logic_vector(11 downto 0); 
     --bram_wr_din: out std_logic_vector(63 downto 0); 
     bram_wr_en: out std_logic_vector(7 downto 0); 
@@ -1188,7 +1188,7 @@ begin
          reg14_rd 		=> reg14_rd,			
 			
 			
-			reset => trn_reset_n,
+			---reset => trn_reset_n,
 			strobe_adc => strobe_adc,
 			--bram_wr_en 		=> user_wr_weA,
 			user_int_1o    => CTL_irq,
@@ -1294,7 +1294,7 @@ begin
       debug_in_2i    => debug_in_2i,
       debug_in_3i    => debug_in_3i,
       debug_in_4i    => debug_in_4i,
-      --rst_i 			=> trn_reset_n,
+      rst_i 			=> trn_reset_n,
       rst_o 			=> user_rst_o
     );
 

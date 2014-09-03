@@ -1,9 +1,8 @@
-/home/vladimir/NEWDMA/v6pcieDMA.ngc 1409315336
-ipcore_dir_ISE13.3/v6_mBuf_128x72.ngc 1332781759
-ipcore_dir_ISE13.3/v6_sfifo_15x128.ngc 1332781759
+/home/ml605/v6pcieDMA.ngc 1409723974
+ipcore_dir_ISE13.3/v6_mBuf_128x72.ngc 1409647789
+ipcore_dir_ISE13.3/v6_sfifo_15x128.ngc 1409647789
 MyUserLogic/UserLogic_00/user_logic_cw.ngc 1332781759
 MyUserLogic/UserLogic_00/inout_logic_cw.ngc 1332781759
-ipcore_dir_ISE13.3/v6_bram4096x64.ngc 1409234546
-ipcore_dir_ISE13.3/v6_prime_fifo_plain.ngc 1332781759
-ipcore_dir_ISE13.3/v6_eb_fifo_counted_resized.ngc 1332781759
-OK
+ipcore_dir_ISE13.3/v6_bram4096x64.ngc 1409662240
+ipcore_dir_ISE13.3/v6_prime_fifo_plain.ngc 1409647789
+ipcore_dir_ISE13.3/v6_eb_fifo_counted_resized.ngc 1409647789

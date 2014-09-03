@@ -7,8 +7,7 @@ module ADC_emul(
                 input adc_data_or_p,
                 input adc_data_or_n,
                 output bram_wr_din,
-					 output bram_wr_addr,
-				//	 output bram_wr_en,					 
+					 output bram_wr_addr,				 
 					 
 					 input reg01_td,
 					 input reg01_tv,
@@ -71,7 +70,7 @@ module ADC_emul(
 				//	 input dma_host2board_busy, 
 				//	 input dma_host2board_done,
 					 
-                input reset,
+             //   input reset,
                 output  strobe_adc,
 					 output user_int_1o,
 					 output user_int_2o,
@@ -168,10 +167,10 @@ parameter WIDTH=16;
     wire                delay_clk;//200 MHz
     wire                adc_data_or_p;
     wire                adc_data_or_n;
-	 wire		[11:0]		bram_wr_addr;
+	 wire		[15:0]		bram_wr_addr;
 	 
 	// reg	 	[7:0]			bram_wr_en;
-	 reg 		[11:0]		bram_addr;
+	 reg 		[15:0]		bram_addr;
     //
     /*Default signal*/
     //
@@ -235,14 +234,8 @@ parameter WIDTH=16;
 	
 	
 	
-//
-/*Gluing data ADC*/
-//
-always @ (posedge clk)
-    begin
-        //adc_dmode_m1 <= up_dmode;
-        //adc_dmode <= adc_dmode_m1;
-        
+always @ (posedge clk) begin 
+  if (bram_addr <= reg01_td) begin
         adc_data_p <= adc_data_p_s;
         adc_data_n <= adc_data_n_s;
         
@@ -267,8 +260,6 @@ always @ (posedge clk)
         real_data[2]<= adc_dmux_a[1];
         real_data[1]<= adc_dmux_b[0];
         real_data[0]<= adc_dmux_a[0];
-        
-        
         adc_or_p <= adc_or_p_s;
         adc_or_n <= adc_or_n_s;
         
@@ -279,52 +270,62 @@ always @ (posedge clk)
                 adc_or_count <= adc_or_count + 1'b1;
             end
             adc_or <= adc_or_count[4];
-    end
+    end else
+		real_data <= 0;
+	 end
+	 
+	 
 	 reg [1:0] count;
-	 reg [11:0] count_ref; 
+	 reg [63:0] count_ref; 
 	 reg [63:0] real_data_out;
 	
 	reg [63:0] count_irq;
-
-
+	
+  reg [31:0] count_str;
 
   always @(posedge clk) begin 
-    if (!reset) begin
+    if (reg01_td == 0 || reg02_td == 0) begin
       bram_addr <= 0;
 	   count <= 0;
-    end else begin
-      count <= count + 1;  
-      case (count)
+		real_data_out <= 0;
+		count_str <= 0;
+		strobe_adc  <= 0;
+	 end else if (reg01_td != 0 && reg02_td != 0) begin
+		count <= count + 1;
+		count_str <= count_str + 1;	
+		case (count)
 	     0: real_data_out[15:0] <= real_data[15:0];	   
 		  1: real_data_out[31:16] <= real_data[15:0];
 		  2: real_data_out[47:32] <= real_data[15:0]; 
 		  3: begin
 		       real_data_out[63:48] <= real_data[15:0];
-		       bram_addr <= bram_addr + 1;
-				 count_ref <= count_ref + 1;
 				 
-					
-				//strobe_adc <= 1;
-					
-		     end
+				 if ((count_str == reg02_tv) && (bram_addr >= 0 && bram_addr <= 'd32768)) begin
+					bram_addr <= 'd32768;
+					strobe_adc  <= 1;
+					count_str <= 0;
+				 end else if (count_str == reg02_tv && bram_addr >= 'd32768) begin
+					bram_addr <= 0;
+					strobe_adc <= 1;
+					count_str <=0;
+				 end 
+				 
+				 
+				 if (bram_addr <= reg01_td || bram_addr <= ('d32768 + reg01_td))
+				   bram_addr <= bram_addr + 1;
+			  end
 	   endcase
     end	 
   end
-    
-  always @(posedge clk) begin
-    if (count_ref == 0)
-		strobe_adc  <= 1;
-	 else
-		strobe_adc  <= 0;
-  end
+
 
   reg user_int_1o;
   reg user_int_2o;
   reg user_int_3o;
   always @(posedge clk) begin
-  //  count_irq <= 0;
-    if ((count_ref <= 32) || ( count_ref >= 'd2000 &&  count_ref <= 'd2048 )) begin
-		 count_irq <= count_irq;
+    //if ((bram_addr <= 32) || ( bram_addr >= 'd2000 &&  bram_addr <= reg1_td )) begin
+	 if ((bram_addr == 0) || (bram_addr == reg01_td && reg01_td != 0)) begin // reg2_td len_ref
+		 count_irq <= count_irq + 1;
 	    user_int_1o <= 1;
     end else 		 
 		 user_int_1o <= 0;
@@ -334,10 +335,10 @@ always @ (posedge clk)
 	
   always @(posedge clk) begin 
     //begin
-      reg01_rd <= 'd1000; // 44
-	   reg01_rv <=  1;//reg01_tv;//1; // Reg 44
-		reg02_rd <= user_int_3o; // state IRQ to reg 
-	   reg02_rv <= 1; //45
+      //reg01_rd <= 'd1000; // 44
+	   //reg01_rv <=  1;//reg01_tv;//1; // Reg 44
+		//reg02_rd <= user_int_1o; // state IRQ to reg 
+	   //reg02_rv <= 1; //45
 		reg03_rd <= 'd1000;//count_irq; // 
 	   reg03_rv <= 1;	//46	
 		reg04_rd <= strobe_adc;
@@ -350,13 +351,13 @@ always @ (posedge clk)
 	   reg07_rv <= 1;		
 		reg08_rd <= real_data; //51
 	   reg08_rv <= 1;
-      reg09_rd <= count_ref; //52
+      reg09_rd <= 'd1000; //52
 	   reg09_rv <= 1;//1;
 		reg10_rd <= count_irq; //53
 	   reg10_rv <= 1;
-		reg11_rd <= 'd1000;
+		reg11_rd <= reg01_td;
 	   reg11_rv <= 1;		
-		reg12_rd <= 'd1000;
+		reg12_rd <= reg02_td;
 	   reg12_rv <= 1;
       reg13_rd <= 'd1000;
 	   reg13_rv <= 1;//1;

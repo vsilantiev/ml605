@@ -752,7 +752,7 @@ begin
              pRAM_AddrA_Inc        <= '1';
 
           when wrST_bram_IDLE =>
-             pRAM_addrA            <= wpipe_Qout(14 downto 3);
+             pRAM_addrA            <= wpipe_Qout( 18 downto 3);
              pRAM_AddrA_Inc        <= wpipe_Qout(2);
              wpipe_QW_Aligned      <= not wpipe_Qout(69);
              wpipe_qout_lo32b      <= (32=>'1', OTHERS=>'0');
@@ -884,7 +884,7 @@ begin
 
 
           when wrST_bram_1st_Data_b2b =>
-             pRAM_addrA            <= wpipe_Qout_latch(14 downto 3);
+             pRAM_addrA            <= wpipe_Qout_latch(18 downto 3);
              wpipe_QW_Aligned      <= not wpipe_Qout_latch(69);
              if wpipe_read_valid = '0' then
                pseudo_DDR_wr_State <= wrST_bram_1st_Data;
@@ -1056,7 +1056,7 @@ begin
 
           when rdST_bram_LA =>
              rpipec_rEn            <= '0';
-             pRAM_addrB            <= rpipec_Qout(14 downto 3);
+             pRAM_addrB            <= rpipec_Qout(18 downto 3);
              rpiped_wr_EOF         <= '0';
              rpiped_wEn_b3         <= '0';
              if rpipec_Qout(2+32)='1' then

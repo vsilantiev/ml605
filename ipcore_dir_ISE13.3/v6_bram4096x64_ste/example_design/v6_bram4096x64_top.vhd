@@ -83,7 +83,7 @@ ENTITY v6_bram4096x64_top IS
       --Inputs - Port A
   
     WEA            : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-    ADDRA          : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
+    ADDRA          : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
   
     DINA           : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
   
@@ -95,7 +95,7 @@ ENTITY v6_bram4096x64_top IS
       --Inputs - Port B
   
     WEB            : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-    ADDRB          : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
+    ADDRB          : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
   
     DINB           : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
     DOUTB          : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
@@ -120,7 +120,7 @@ ARCHITECTURE xilinx OF v6_bram4096x64_top IS
       --Port A
   
     WEA        : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-    ADDRA      : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
+    ADDRA      : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
   
     DINA       : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
   
@@ -133,7 +133,7 @@ ARCHITECTURE xilinx OF v6_bram4096x64_top IS
       --Port B
   
     WEB        : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
-    ADDRB      : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
+    ADDRB      : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
   
     DINB       : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
     DOUTB      : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
