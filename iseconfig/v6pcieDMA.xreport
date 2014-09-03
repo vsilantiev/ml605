@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2014-08-29T16:21:33</DateModified>
+  <DateModified>2014-09-03T15:18:32</DateModified>
   <ModuleName>v6pcieDMA</ModuleName>
-  <SummaryTimeStamp>2014-08-29T11:03:47</SummaryTimeStamp>
-  <SavedFilePath>/home/vladimir/NEWDMA/iseconfig/v6pcieDMA.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>/home/vladimir/NEWDMA/</ImplementationReportsDirectory>
+  <SummaryTimeStamp>2014-09-03T13:23:58</SummaryTimeStamp>
+  <SavedFilePath>C:/work/xilinx/ml605/iseconfig/v6pcieDMA.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>C:/work/xilinx/ml605\</ImplementationReportsDirectory>
   <DateInitialized>2014-08-22T11:02:27</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

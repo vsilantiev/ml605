@@ -1,7 +1,7 @@
 ##############################################################
 #
-# Xilinx Core Generator version 14.7
-# Date: Thu Aug 28 14:01:41 2014
+# Xilinx Core Generator version 14.5
+# Date: Sun Aug 31 18:34:06 2014
 #
 ##############################################################
 #
@@ -53,8 +53,8 @@ CSET disable_collision_warnings=false
 CSET disable_out_of_range_warnings=false
 CSET ecc=false
 CSET ecctype=No_ECC
-CSET enable_a=Always_Enabled
-CSET enable_b=Always_Enabled
+CSET enable_a=Use_ENA_Pin
+CSET enable_b=Use_ENB_Pin
 CSET error_injection_type=Single_Bit_Error_Injection
 CSET fill_remaining_memory_locations=false
 CSET interface_type=Native
@@ -102,4 +102,4 @@ CSET write_width_b=64
 MISC pkg_timestamp=2011-03-11T08:24:14Z
 # END Extra information
 GENERATE
-# CRC: f8d87b1b
+# CRC: 7a2045e8

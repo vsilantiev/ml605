@@ -95,7 +95,9 @@ entity bram_DDRs_Control is
 
            mem_clk                  : IN    std_logic;
            trn_clk                  : IN    std_logic;
-           trn_reset_n              : IN    std_logic
+           trn_reset_n              : IN    std_logic;
+			  strobe_adc					: IN    std_logic;
+			  adcclock						: in 	  std_logic
           );
 end entity bram_DDRs_Control;
 
@@ -245,12 +247,14 @@ architecture Behavioral of bram_DDRs_Control is
       wea            : IN  std_logic_vector(7 downto 0);
       dina           : IN  std_logic_vector(C_DBUS_WIDTH-1 downto 0);
       douta          : OUT std_logic_vector(C_DBUS_WIDTH-1 downto 0);
+		ena				: IN  std_logic;
 
       clkb           : IN  std_logic;
       addrb          : IN  std_logic_vector(C_PRAM_AWIDTH-1 downto 0);
       web            : IN  std_logic_vector(7 downto 0);
       dinb           : IN  std_logic_vector(C_DBUS_WIDTH-1 downto 0);
-      doutb          : OUT std_logic_vector(C_DBUS_WIDTH-1 downto 0)
+      doutb          : OUT std_logic_vector(C_DBUS_WIDTH-1 downto 0);
+		enb				: IN  std_logic
     );
   end component;
 
@@ -348,7 +352,34 @@ architecture Behavioral of bram_DDRs_Control is
   signal   user_wr_doutA         : std_logic_vector(C_DBUS_WIDTH-1 downto 0);
   signal   user_rd_weB           : std_logic_vector(7 downto 0);
   signal   user_rd_dinB          : std_logic_vector(C_DBUS_WIDTH-1 downto 0);
+  
+  
+  -----------
+   
 
+signal	user_wr_addrA1            : std_logic_vector(C_PRAM_AWIDTH-1 downto 0);
+signal	user_wr_weA1              : std_logic_vector(7 downto 0);
+signal	user_wr_dinA1             : std_logic_vector(C_DBUS_WIDTH-1 downto 0);
+signal   user_wr_doutA1            : std_logic_vector(C_DBUS_WIDTH-1 downto 0);
+signal   parta_clock_enableA1 	: std_logic;
+signal   pRAM_weB1              : std_logic_vector(7 downto 0);		  
+signal   pRAM_addrB1            : std_logic_vector(C_PRAM_AWIDTH-1 downto 0);		  
+signal   pRAM_dinB1             : std_logic_vector(C_DBUS_WIDTH-1 downto 0);
+signal   pRAM_doutB1            : std_logic_vector(C_DBUS_WIDTH-1 downto 0);
+
+signal	user_wr_addrA2            : std_logic_vector(C_PRAM_AWIDTH-1 downto 0);
+signal	user_wr_weA2              : std_logic_vector(7 downto 0);
+signal	user_wr_dinA2             : std_logic_vector(C_DBUS_WIDTH-1 downto 0);
+signal   user_wr_doutA2            : std_logic_vector(C_DBUS_WIDTH-1 downto 0);
+signal   parta_clock_enableA2 	: std_logic;
+signal   pRAM_weB2              : std_logic_vector(7 downto 0);		  
+signal   pRAM_addrB2            : std_logic_vector(C_PRAM_AWIDTH-1 downto 0);		  
+signal   pRAM_dinB2             : std_logic_vector(C_DBUS_WIDTH-1 downto 0);
+signal   pRAM_doutB2            : std_logic_vector(C_DBUS_WIDTH-1 downto 0);
+        
+        
+  
+-----------------------
 
   signal   pRAM_weB              : std_logic_vector(7 downto 0);
   signal   pRAM_dinB             : std_logic_vector(C_DBUS_WIDTH-1 downto 0);
@@ -389,6 +420,8 @@ architecture Behavioral of bram_DDRs_Control is
   signal rpiped_wr_postpone      : std_logic;
 
   signal simone_debug : std_logic;	
+
+
 
 begin
 
@@ -659,46 +692,135 @@ begin
 
 
 
+
     -- -------------------------------------------------
     -- pkt_RAM instantiate
-    -- 
-    pkt_RAM_IN:
-    v6_bram4096x64
-      port map (
-         clka      =>    trn_clk  ,
-         addra     =>    pRAM_addrA ,
-         wea       =>    pRAM_weA   ,
-         dina      =>    pRAM_dinA  ,
-         douta     =>    pRAM_doutA ,
+     
+	 --
+   -- pkt_RAM_IN:
+   -- v6_bram4096x64
+   --   port map (
+   --      clka      =>    trn_clk  ,
+   --      addra     =>    pRAM_addrA ,
+    --     wea       =>    pRAM_weA   ,
+   --      dina      =>    pRAM_dinA  ,
+     --    douta     =>    pRAM_doutA ,
+		--	ena		 =>    '1',
 
-         clkb      =>    user_rd_clk  ,
-         addrb     =>    user_rd_addrB ,
-         web       =>    user_rd_weB   ,  --'0'
-         dinb      =>    user_rd_dinB  ,  --'0'
-         doutb     =>    user_rd_doutB 
-       );
+    --     clkb      =>    user_rd_clk  ,
+    --     addrb     =>    user_rd_addrB ,
+     --    web       =>    user_rd_weB   ,  --'0'
+     --    dinb      =>    user_rd_dinB  ,  --'0'
+--         doutb     =>    user_rd_doutB ,
+	--		enb		 =>	 '1'
+     --  );
 
     user_rd_weB       <= X"00";
     user_rd_dinB      <= (Others =>'0');
 
-    pkt_RAM_OUT:
+
+
+    pRAM_weB      <= X"00";
+    pRAM_dinB      <= (Others =>'0');
+
+
+  --  pRAM_weB2       <= X"00";
+  --  pRAM_dinB2      <= (Others =>'0');
+
+
+	--	user_wr_addrA1 <= user_wr_addrA;
+	--	user_wr_addrA2 <= user_wr_addrA;
+	--	user_wr_weA1 <= user_wr_weA;
+	--	user_wr_weA2 <= user_wr_weA;
+		
+	--	user_wr_dinA1 <= user_wr_dinA;
+	--	user_wr_dinA2 <= user_wr_dinA;
+		
+	--	pRAM_addrB1 <= pRAM_addrB;
+	--	pRAM_weB1 <= pRAM_weB;
+	--	pRAM_dinB1 <= pRAM_dinB;
+		
+	--	pRAM_addrB2 <= pRAM_addrB;
+	--	pRAM_weB2 <= pRAM_weB;
+	--	pRAM_dinB2 <= pRAM_dinB;
+
+
+		
+		parta_clock_enableA1 <= strobe_adc;
+		parta_clock_enableA2 <= not strobe_adc;
+stayOne:	process (user_wr_clk)
+	begin
+		if ( (user_wr_clk'event and user_wr_clk = '1')) then
+		 	IF    ( strobe_adc='0' ) THEN
+				user_wr_doutA <= user_wr_doutA2;
+			 
+			 
+			ELSE    
+				user_wr_doutA <= user_wr_doutA1;
+			 
+			 
+			END IF; 
+		 end if; 
+	end process;
+	
+	staytwo:	process (trn_clk)
+	begin
+
+		if ( (trn_clk'event and trn_clk = '1')) then
+		
+	 		IF    ( strobe_adc='0' ) THEN
+			 
+				pRAM_doutB <= pRAM_doutB1;
+			 
+			ELSE    
+			 
+				pRAM_doutB <= pRAM_doutB2;
+			 
+			END IF; 
+		 end if;
+	end process;
+	
+	
+
+    pkt_RAM_OUT1:
     v6_bram4096x64
       port map (
          clka      =>    user_wr_clk  ,
          addra     =>    user_wr_addrA ,
          wea       =>    user_wr_weA   ,
          dina      =>    user_wr_dinA  ,
-         douta     =>    user_wr_doutA , --'open'
+         douta     =>    user_wr_doutA1, --'open'
+			ena		 =>    parta_clock_enableA1,--ENA
+
+         clkb      =>    trn_clk  ,
+         addrb     =>    pRAM_addrB ,
+         web       =>    pRAM_weB  ,
+         dinb      =>    pRAM_dinB  ,
+         doutb     =>    pRAM_doutB1 ,
+			enb		 =>	 parta_clock_enableA2
+       );
+		 
+	
+
+	pkt_RAM_OUT2:
+    v6_bram4096x64
+      port map (
+         clka      =>    user_wr_clk  ,
+         addra     =>    user_wr_addrA ,
+         wea       =>    user_wr_weA   ,
+         dina      =>    user_wr_dinA  ,
+         douta     =>    user_wr_doutA2 , --'open'
+			ena		 =>	 parta_clock_enableA2,
 
          clkb      =>    trn_clk  ,
          addrb     =>    pRAM_addrB ,
          web       =>    pRAM_weB   ,
          dinb      =>    pRAM_dinB  ,
-         doutb     =>    pRAM_doutB 
+         doutb     =>    pRAM_doutB2 ,
+			enb		 =>	 parta_clock_enableA1
        );
 
-    pRAM_weB       <= X"00";
-    pRAM_dinB      <= (Others =>'0');
+
 
 
 

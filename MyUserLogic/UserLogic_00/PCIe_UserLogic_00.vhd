@@ -1862,10 +1862,10 @@ entity PCIe_UserLogic_00 is
    --  reg13_rv: out std_logic; 
   --   reg14_rd: out std_logic_vector(31 downto 0); 
    --  reg14_rv: out std_logic; 
-    rst_o: out std_logic 
-  --  user_int_1o: out std_logic; 
-  --  user_int_2o: out std_logic; 
-  --  user_int_3o: out std_logic
+    rst_o: out std_logic --;
+   -- user_int_1o: out std_logic; 
+   -- user_int_2o: out std_logic; 
+   -- user_int_3o: out std_logic
   );
 end PCIe_UserLogic_00;
 
@@ -2404,9 +2404,9 @@ architecture structural of PCIe_UserLogic_00 is
       to_register_clk: out std_logic; 
       to_register_clr: out std_logic; 
       to_register_data_in: out std_logic_vector(31 downto 0); 
-      to_register_en: out std_logic_vector(0 downto 0) 
-     -- user_int_1o: out std_logic; 
-     -- user_int_2o: out std_logic; 
+      to_register_en: out std_logic_vector(0 downto 0)-- ;
+    --  user_int_1o: out std_logic; 
+    --  user_int_2o: out std_logic; 
      -- user_int_3o: out std_logic
     );
   end component;
@@ -3025,9 +3025,9 @@ begin
  -- reg14_rd <= x_x59;
  -- reg14_rv <= x_x60;
   rst_o <= x_x82;
---  user_int_1o <= x_x83;
- -- user_int_2o <= x_x84;
---  user_int_3o <= x_x85;
+  --user_int_1o <= x_x83;
+ --user_int_2o <= x_x84;
+  --user_int_3o <= x_x85;
 
   DMA_Host2Board_Busy_ce_and2_comp: entity work.xland2
     port map (
@@ -4916,10 +4916,10 @@ begin
       to_register_clk => sysgen_dut_to_register_clk,
       to_register_clr => sysgen_dut_to_register_clr,
       to_register_data_in => sysgen_dut_to_register_data_in,
-      to_register_en(0) => sysgen_dut_to_register_en
-     -- user_int_1o => x_x83,
+      to_register_en(0) => sysgen_dut_to_register_en 
+    --  user_int_1o => x_x83,
      -- user_int_2o => x_x84,
-     -- user_int_3o => x_x85
+    --  user_int_3o => x_x85
     );
 
 end structural;

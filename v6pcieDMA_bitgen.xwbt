@@ -1,8 +1,8 @@
 INTSTYLE=ise
-INFILE=/home/vladimir/NEWDMA/v6pcieDMA.ncd
-OUTFILE=/home/vladimir/NEWDMA/v6pcieDMA.bit
+INFILE=C:\work\xilinx\ml605\v6pcieDMA.ncd
+OUTFILE=C:\work\xilinx\ml605\v6pcieDMA.bit
 FAMILY=Virtex6
 PART=xc6vlx240t-1ff1156
-WORKINGDIR=/home/vladimir/NEWDMA
+WORKINGDIR=C:\work\xilinx\ml605
 LICENSE=ISE
 USER_INFO=__0_0_0

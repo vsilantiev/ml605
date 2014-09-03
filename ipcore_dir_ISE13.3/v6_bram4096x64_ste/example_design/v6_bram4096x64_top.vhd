@@ -81,6 +81,7 @@ USE UNISIM.VCOMPONENTS.ALL;
 ENTITY v6_bram4096x64_top IS
   PORT (
       --Inputs - Port A
+    ENA            : IN STD_LOGIC;  --opt port
   
     WEA            : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
     ADDRA          : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
@@ -93,6 +94,7 @@ ENTITY v6_bram4096x64_top IS
 
   
       --Inputs - Port B
+    ENB            : IN STD_LOGIC;  --opt port
   
     WEB            : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
     ADDRB          : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
@@ -118,6 +120,7 @@ ARCHITECTURE xilinx OF v6_bram4096x64_top IS
   COMPONENT v6_bram4096x64 IS
   PORT (
       --Port A
+    ENA        : IN STD_LOGIC;  --opt port
   
     WEA        : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
     ADDRA      : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
@@ -131,6 +134,7 @@ ARCHITECTURE xilinx OF v6_bram4096x64_top IS
 
   
       --Port B
+    ENB        : IN STD_LOGIC;  --opt port
   
     WEB        : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
     ADDRB      : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
@@ -165,6 +169,7 @@ BEGIN
   bmg0 : v6_bram4096x64
     PORT MAP (
       --Port A
+      ENA        => ENA,
   
       WEA        => WEA,
       ADDRA      => ADDRA,
@@ -177,6 +182,7 @@ BEGIN
 
   
       --Port B
+      ENB        => ENB, 
   
       WEB        => WEB,
       ADDRB      => ADDRB,

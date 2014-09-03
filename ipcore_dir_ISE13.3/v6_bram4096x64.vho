@@ -52,11 +52,13 @@
 COMPONENT v6_bram4096x64
   PORT (
     clka : IN STD_LOGIC;
+    ena : IN STD_LOGIC;
     wea : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
     addra : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
     dina : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
     douta : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
     clkb : IN STD_LOGIC;
+    enb : IN STD_LOGIC;
     web : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
     addrb : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
     dinb : IN STD_LOGIC_VECTOR(63 DOWNTO 0);
@@ -72,11 +74,13 @@ END COMPONENT;
 your_instance_name : v6_bram4096x64
   PORT MAP (
     clka => clka,
+    ena => ena,
     wea => wea,
     addra => addra,
     dina => dina,
     douta => douta,
     clkb => clkb,
+    enb => enb,
     web => web,
     addrb => addrb,
     dinb => dinb,

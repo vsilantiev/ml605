@@ -153,10 +153,19 @@ architecture Behavioral of v6pcieDMA is
 			
 			reset	  : in std_logic;
 			strobe_adc : out std_logic;
+			--;
 			-- IRQ
-			user_int_1o: out std_logic; 
+	 		user_int_1o: out std_logic; 
 			user_int_2o: out std_logic;
-			user_int_3o: out std_logic
+			user_int_3o: out std_logic;
+			adcclock: 	 out std_logic;
+			
+			fifowr_clk   : OUT  std_logic;
+			fifowr_en    : OUT  std_logic;
+			fifodin      : OUT  std_logic_VECTOR(72-1 downto 0);
+			fifofull     : IN std_logic;
+			fifoprog_full:IN std_logic
+		
 			
 			-- DMA status
 			--dma_host2board_busy: in std_logic; 
@@ -253,10 +262,10 @@ end component;
    --- reg13_rv: out std_logic; 
    --- reg14_rd: out std_logic_vector(31 downto 0); 
    --- reg14_rv: out std_logic; 
-    rst_o: out std_logic 
+    rst_o: out std_logic --;
    -- user_int_1o: out std_logic; 
-  --  user_int_2o: out std_logic;
-  --  user_int_3o: out std_logic
+    --user_int_2o: out std_logic;
+   -- user_int_3o: out std_logic
   );
 end component;
 
@@ -466,7 +475,7 @@ end component;
    END COMPONENT;	
 	
 	
-   COMPONENT bram_DDRs_Control
+   COMPONENT adctofifo
    GENERIC (
              C_ASYNFIFO_WIDTH  :  integer ;
              P_SIMULATION      :  boolean
@@ -517,11 +526,27 @@ end component;
       mem_clk                  : IN    std_logic;
       trn_clk                  : IN    std_logic;
 		Sim_Zeichen              : OUT   std_logic;  
-      trn_reset_n              : IN    std_logic
+      trn_reset_n              : IN    std_logic;
+		strobe_adc				    : IN    std_logic;
+		adcclock						:	in 	std_logic ;
+			fifowr_clk   : IN std_logic;
+			fifowr_en    : IN  std_logic;
+			fifodin      : IN  std_logic_VECTOR(72-1 downto 0);
+			fifofull     : OUT std_logic;
+			fifoprog_full:OUT std_logic
     );
    END COMPONENT;
 	
 	
+	signal	fifowr_clk   :    std_logic;
+	signal		fifowr_en    :   std_logic;
+	signal		fifodin      :    std_logic_VECTOR(72-1 downto 0);
+	signal		fifofull     :   std_logic;
+	signal		fifoprog_full:  std_logic;
+			
+	
+	
+	signal	  adcclock					:	std_logic;
    signal    DDR_wr_sof               :  std_logic;
    signal    DDR_wr_eof               :  std_logic;
    signal    DDR_wr_v                 :  std_logic;
@@ -603,7 +628,7 @@ end component;
 			 --FIFO USER-->PCIe
           B2H_wr_clk        : IN  std_logic;
           B2H_wr_en         : IN  std_logic;
-          B2H_wr_din        : IN  std_logic_VECTOR(72-1 downto 0);
+          B2H_wr_din        : IN  std_logic_VECTOR(64-1 downto 0);
           B2H_wr_pfull      : OUT std_logic;
           B2H_wr_full       : OUT std_logic;
           B2H_wr_data_count : OUT std_logic_VECTOR(C_EMU_FIFO_DC_WIDTH-1 downto 0); 
@@ -1189,11 +1214,18 @@ begin
 			
 			
 			reset => trn_reset_n,
-			strobe_adc => strobe_adc,
+			strobe_adc => strobe_adc,--,
 			--bram_wr_en 		=> user_wr_weA,
 			user_int_1o    => CTL_irq,
 			user_int_2o    => DAQ_irq,
-			user_int_3o    => DLM_irq
+			user_int_3o    => DLM_irq,
+			adcclock			=> adcclock,
+			
+			fifowr_clk =>fifowr_clk   ,
+			fifowr_en     =>fifowr_en,
+			fifodin       =>fifodin,
+			fifofull      => fifofull,
+			fifoprog_full => fifoprog_full
 			
 			--DMA_Host2Board_Busy => DMA_Host2Board_Busy,
 			--DMA_Host2Board_Done => DMA_Host2Board_Done
@@ -1287,9 +1319,9 @@ begin
   ---    reg13_rv 		=> reg13_rv,
   ---    reg14_rd 		=> reg14_rd,
   ---    reg14_rv 		=> reg14_rv,
---		user_int_1o    => CTL_irq,
---		user_int_2o    => DAQ_irq,
---		user_int_3o    => DLM_irq,
+	--	user_int_1o    => CTL_irq,
+	--	user_int_2o    => DAQ_irq,
+	--	user_int_3o    => DLM_irq,
       debug_in_1i    => debug_in_1i,
       debug_in_2i    => debug_in_2i,
       debug_in_3i    => debug_in_3i,
@@ -1770,10 +1802,10 @@ make4Lanes: if pcieLanes = 4 generate
   -- -----------------------------------------------------------------------
 
 
-   LoopBack_BRAM_Off:  if not USE_LOOPBACK_TEST generate
+  -- LoopBack_BRAM_Off:  if not USE_LOOPBACK_TEST generate
 
    DDRs_ctrl_module:
-   bram_DDRs_Control
+   adctofifo
    GENERIC MAP (
                 C_ASYNFIFO_WIDTH    => 72 ,
                 P_SIMULATION        => FALSE
@@ -1820,56 +1852,19 @@ make4Lanes: if pcieLanes = 4 generate
       mem_clk                  => trn_clk             , --  IN
       trn_clk                  => trn_clk             , --  IN    std_logic;
 		Sim_Zeichen              => Sim_Zeichen         , --  OUT   std_logic;  
-      trn_reset_n              => trn_reset_n           --  IN    std_logic
+      trn_reset_n              => trn_reset_n,           --  IN    std_logic
+		strobe_adc					 => strobe_adc	,				--	IN    std_logic
+		adcclock => adcclock,
+			fifowr_clk =>fifowr_clk   ,
+			fifowr_en     =>fifowr_en,
+			fifodin       =>fifodin,
+			fifofull      => open,
+			fifoprog_full => open
     );
    
-	end generate;
+--	end generate;
 
-   LoopBack_BRAM_On:  if USE_LOOPBACK_TEST generate
-
-
-   DDRs_ctrl_module:
-   bram_DDRs_Control_loopback
-   GENERIC MAP (
-                C_ASYNFIFO_WIDTH    => 72 ,
-                P_SIMULATION        => FALSE
-               )
-   PORT MAP(
-
-      -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
-      DDR_wr_sof               => DDR_wr_sof          , --  IN    std_logic;
-      DDR_wr_eof               => DDR_wr_eof          , --  IN    std_logic;
-      DDR_wr_v                 => DDR_wr_v            , --  IN    std_logic;
-      DDR_wr_FA                => DDR_wr_FA           , --  IN    std_logic;
-      DDR_wr_Shift             => DDR_wr_Shift        , --  IN    std_logic;
-      DDR_wr_Mask              => DDR_wr_Mask         , --  IN    std_logic_vector(2-1 downto 0);
-      DDR_wr_din               => DDR_wr_din          , --  IN    std_logic_vector(C_DBUS_WIDTH-1 downto 0);
-      DDR_wr_full              => DDR_wr_full         , --  OUT   std_logic;
-
-      DDR_rdc_sof              => DDR_rdc_sof         , --  IN    std_logic;
-      DDR_rdc_eof              => DDR_rdc_eof         , --  IN    std_logic;
-      DDR_rdc_v                => DDR_rdc_v           , --  IN    std_logic;
-      DDR_rdc_FA               => DDR_rdc_FA          , --  IN    std_logic;
-      DDR_rdc_Shift            => DDR_rdc_Shift       , --  IN    std_logic;
-      DDR_rdc_din              => DDR_rdc_din         , --  IN    std_logic_vector(C_DBUS_WIDTH-1 downto 0);
-      DDR_rdc_full             => DDR_rdc_full        , --  OUT   std_logic;
-
-      -- DDR payload FIFO Read Port
-      DDR_FIFO_RdEn            => DDR_FIFO_RdEn       ,  -- IN    std_logic; 
-      DDR_FIFO_Empty           => DDR_FIFO_Empty      ,  -- OUT   std_logic;
-      DDR_FIFO_RdQout          => DDR_FIFO_RdQout     ,  -- OUT   std_logic_vector(C_DBUS_WIDTH-1 downto 0);
-
-      -- Common interface
-      DDR_Ready                => DDR_Ready           , --  OUT   std_logic;
-      DDR_Blinker              => DDR_Blinker         , --  OUT   std_logic;
-      mem_clk                  => trn_clk             , --  IN
-      trn_clk                  => trn_clk             , --  IN    std_logic;
-		Sim_Zeichen              => Sim_Zeichen         , --  OUT   std_logic;  
-      trn_reset_n              => trn_reset_n           --  IN    std_logic
-    );
-
-   end generate;
-
+   
 
 
     LEDs_IO_pin(0)    <= trn_reset_n xor Format_Shower;
@@ -1904,11 +1899,11 @@ make4Lanes: if pcieLanes = 4 generate
          H2B_rd_valid         => user_rd_valid     	,
          H2B_rd_data_count    => user_rd_data_count	,
          
-			B2H_wr_clk           => clk_200MHz       		,
-         B2H_wr_en            => user_wr_en        	,
-         B2H_wr_din           => user_wr_din       	,
-         B2H_wr_pfull         => user_wr_pfull     	,
-         B2H_wr_full          => user_wr_full      	,
+			B2H_wr_clk           => fifowr_clk       		,
+         B2H_wr_en            => fifowr_en        	,
+         B2H_wr_din           => user_wr_dinA       	,
+         B2H_wr_pfull         => fifoprog_full     	,
+         B2H_wr_full          => fifofull       	,
          B2H_wr_data_count    => user_wr_data_count	,
 
 
@@ -1976,47 +1971,7 @@ make4Lanes: if pcieLanes = 4 generate
 
    end generate;
 	
-   LoopBack_FIFO_On:  if USE_LOOPBACK_TEST generate
-
-     queue_buffer0:
-     eb_wrapper_loopback
-      port map (
-         wr_clk     => trn_clk   ,  -- eb_wclk   ,
-         wr_en      => eb_we  ,
-         din        => eb_din ,
-         pfull      => eb_pfull  ,
-         full       => eb_full   ,
-
-         rd_clk     => trn_clk   ,  -- eb_rclk   ,
-         rd_en      => eb_re     ,
-         dout       => eb_dout   ,
-         pempty     => eb_pempty ,
-         empty      => eb_empty  ,
-
-         data_count => eb_data_count(C_EMU_FIFO_DC_WIDTH-1+1 downto 1) ,
-         rst        => eb_rst    
-         );
-
-     eb_data_count(C_FIFO_DC_WIDTH downto C_EMU_FIFO_DC_WIDTH+1)
-                      <= C_ALL_ZEROS(C_FIFO_DC_WIDTH downto C_EMU_FIFO_DC_WIDTH+1);
-     eb_data_count(0)<= '0';
-     fifo_reset_done <= not eb_rst;
-     eb_FIFO_ow           <= eb_we_up and eb_full;
-     eb_din(72-1 downto C_DBUS_WIDTH)       <= (OTHERS=>'0');
-
-     eb_FIFO_Status(C_DBUS_WIDTH-1 downto C_FIFO_DC_WIDTH+3)
-                         <= (OTHERS=>'0');
-     eb_FIFO_Status(C_FIFO_DC_WIDTH+2 downto 3)
-                         <= eb_data_count(C_FIFO_DC_WIDTH downto 1);
-     eb_FIFO_Status(2)    <= '0'; 
-     eb_FIFO_Status(1)    <= eb_pfull;
-     eb_FIFO_Status(0)    <= eb_empty and fifo_reset_done;
-	 
-	 
-     H2B_FIFO_Status <= (OTHERS=>'0');	 
-	  H2B_FIFO_Status <= (OTHERS=>'0');	  	
-		
-   end generate;
+    
 
 
 end Behavioral;

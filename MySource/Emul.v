@@ -75,7 +75,16 @@ module ADC_emul(
                 output  strobe_adc,
 					 output user_int_1o,
 					 output user_int_2o,
-					 output user_int_3o
+					 output user_int_3o,
+					 output adcclock,
+					 
+					 
+					output 	fifowr_clk, 
+					output fifowr_en ,  
+					output fifodin  ,   
+					input  fifofull ,   
+					input  fifoprog_full
+			
                 );
 //                               
 /*Parametrs*/
@@ -112,12 +121,14 @@ parameter WIDTH=16;
 	 wire reg12_tv;	 
 	 wire [31:0] reg13_td;
 	 wire reg13_tv;	 
-    wire [31:0] reg14_td;
+    
+	 
+	 wire [31:0] reg14_td;
 	 wire reg14_tv;	   
 		
 		
 		
-	 reg strobe_adc;
+	 wire strobe_adc;
 		
 		
 		
@@ -150,6 +161,9 @@ parameter WIDTH=16;
 	 reg reg12_rv;
 	 reg [31:0] reg13_rd;
 	 reg reg13_rv;
+	 
+	 
+	 reg [31:0] reg14_rdCur = 'd0;
 	 reg [31:0] reg14_rd;
 	 reg reg14_rv;
 
@@ -233,8 +247,18 @@ parameter WIDTH=16;
 	reg                 adc_or ='d0;
 	genvar              l_inst;
 	
+	 reg curstrobe  = 0;
+				
+	reg adcclock;
 	
 	
+	wire	 fifowr_clk;
+	reg    fifowr_en ;
+	reg[71:0]  fifodin ;
+	wire  fifofull;
+	wire  fifoprog_full;
+					
+					
 //
 /*Gluing data ADC*/
 //
@@ -292,50 +316,74 @@ always @ (posedge clk)
     if (!reset) begin
       bram_addr <= 0;
 	   count <= 0;
+		fifowr_en<=0;
     end else begin
       count <= count + 1;  
+		
       case (count)
-	     0: real_data_out[15:0] <= real_data[15:0];	   
-		  1: real_data_out[31:16] <= real_data[15:0];
-		  2: real_data_out[47:32] <= real_data[15:0]; 
+	     0: 
+			begin
+				real_data_out[15:0] <= real_data[15:0];	
+				fifowr_en <= 0;				
+		   end
+		  1:
+				begin
+				real_data_out[31:16] <= real_data[15:0];
+				 fifowr_en <= 0;
+				 end
+		  2: 
+				begin
+				real_data_out[47:32] <= real_data[15:0]; 
+				 fifowr_en <= 0;
+				 end
 		  3: begin
 		       real_data_out[63:48] <= real_data[15:0];
 		       bram_addr <= bram_addr + 1;
 				 count_ref <= count_ref + 1;
+				
 				 
-					
+				 fifowr_en<= ~fifofull;
+				   
+				  
+				
 				//strobe_adc <= 1;
 					
 		     end
 	   endcase
+		 fifodin<= "0000" & "0" & "0" & "00" &   real_data_out[32-1 :0] & real_data_out[64-1 : 32];
+				
     end	 
   end
     
-  always @(posedge clk) begin
+  always @(posedge clk) 
+  begin
     if (count_ref == 0)
-		strobe_adc  <= 1;
-	 else
-		strobe_adc  <= 0;
+	 begin
+		curstrobe  <= ~curstrobe;
+	 end 
+		//strobe_adc  <= 0;
   end
 
   reg user_int_1o;
   reg user_int_2o;
   reg user_int_3o;
+   
   always @(posedge clk) begin
   //  count_irq <= 0;
-    if ((count_ref <= 32) || ( count_ref >= 'd2000 &&  count_ref <= 'd2048 )) begin
-		 count_irq <= count_irq;
-	    user_int_1o <= 1;
-    end else 		 
-		 user_int_1o <= 0;
+    if (count_ref <= 10) 
+	     user_int_1o <= 1;
+     else		 
+		  user_int_1o <= 0;
 	 
   end
 	
-	
+	 
   always @(posedge clk) begin 
     //begin
       reg01_rd <= 'd1000; // 44
 	   reg01_rv <=  1;//reg01_tv;//1; // Reg 44
+		
+		
 		reg02_rd <= user_int_3o; // state IRQ to reg 
 	   reg02_rv <= 1; //45
 		reg03_rd <= 'd1000;//count_irq; // 
@@ -360,10 +408,17 @@ always @ (posedge clk)
 	   reg12_rv <= 1;
       reg13_rd <= 'd1000;
 	   reg13_rv <= 1;//1;
-		reg14_rd <= 'd1000;
-	   reg14_rv <= 1;
 		
- 
+		 
+	   
+		
+		if (reg14_tv == 1)
+		begin
+			reg14_rdCur <= reg14_td;
+			
+		end
+		reg14_rd <= reg14_rdCur ;
+		reg14_rv <= 1;
       //reg01_rd <= reg01_td;
 		//reg01_rv <= reg01_tv;
     //end
@@ -542,10 +597,9 @@ IDDR #(
 
 
 assign bram_wr_addr=bram_addr;
-
-
-assign bram_wr_din=real_data_out;
  
+assign fifowr_clk = clk;
+assign bram_wr_din = real_data_out;
 //assign strobe_adc = strobe_adccur;
 
 endmodule

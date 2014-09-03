@@ -1,17 +1,17 @@
-Release 14.7 ngdbuild P.20131013 (lin64)
-Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Release 14.5 ngdbuild P.58f (nt64)
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 
-Command Line: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/ngdbuild -intstyle
-ise -dd _ngo -sd MyUserLogic/UserLogic_00 -sd ipcore_dir_ISE13.3 -nt timestamp
--uc MyUCF/ABB3_pcie_4_lane_Emu_FIFO_elink.ucf -p xc6vlx240t-ff1156-1
-v6pcieDMA.ngc v6pcieDMA.ngd
+Command Line: C:\Xilinx\14.5\ISE_DS\ISE\bin\nt64\unwrapped\ngdbuild.exe
+-intstyle ise -dd _ngo -sd MyUserLogic/UserLogic_00 -sd ipcore_dir_ISE13.3 -sd
+ipcore_dir -nt timestamp -uc MyUCF/ABB3_pcie_4_lane_Emu_FIFO_elink.ucf -p
+xc6vlx240t-ff1156-1 v6pcieDMA.ngc v6pcieDMA.ngd
 
-Reading NGO file "/home/vladimir/NEWDMA/v6pcieDMA.ngc" ...
+Reading NGO file "C:/work/xilinx/ml605/v6pcieDMA.ngc" ...
 Loading design module "ipcore_dir_ISE13.3/v6_mBuf_128x72.ngc"...
 Loading design module "ipcore_dir_ISE13.3/v6_sfifo_15x128.ngc"...
 Loading design module "MyUserLogic/UserLogic_00/user_logic_cw.ngc"...
 Loading design module "MyUserLogic/UserLogic_00/inout_logic_cw.ngc"...
-Loading design module "ipcore_dir_ISE13.3/v6_bram4096x64.ngc"...
+Loading design module "ipcore_dir/fifomodule.ngc"...
 Loading design module "ipcore_dir_ISE13.3/v6_prime_fifo_plain.ngc"...
 Loading design module "ipcore_dir_ISE13.3/v6_eb_fifo_counted_resized.ngc"...
 Gathering constraint information from source properties...
@@ -73,11 +73,39 @@ WARNING:NgdBuild:486 - Attribute "SIM_DEVICE" is not allowed on symbol
    "U0/xst_fifo_generator/gconvfifo.rf/gbiv5.bi/v6_fifo.fblk/gextw[1].gnll_fifo.
    inst_extd/gonep.inst_prim/gf36e1_inst.sngfifo36e1" of type "FIFO36E1".  This
    attribute will be ignored.
-WARNING:NgdBuild:486 - Attribute "SIM_DEVICE" is not allowed on symbol
-   "U0/xst_fifo_generator/gconvfifo.rf/gbiv5.bi/v6_fifo.fblk/gextw[1].gnll_fifo.
-   inst_extd/gonep.inst_prim/gf36e1_inst.sngfifo36e1" of type "FIFO36E1".  This
-   attribute will be ignored.
 WARNING:NgdBuild:452 - logical net 'cfg_dcommand<15>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<31>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<30>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<29>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<28>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<27>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<26>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<25>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<24>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<23>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<22>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<21>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<20>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<19>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<18>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<17>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<16>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<15>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<14>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<13>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<12>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<11>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<10>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<9>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<8>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<7>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<6>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<5>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<4>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<3>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<2>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<1>' has no driver
+WARNING:NgdBuild:452 - logical net 'reg14_rd<0>' has no driver
 WARNING:NgdBuild:452 - logical net 'reg01_td<31>' has no driver
 WARNING:NgdBuild:452 - logical net 'reg01_td<30>' has no driver
 WARNING:NgdBuild:452 - logical net 'reg01_td<29>' has no driver
@@ -526,6 +554,72 @@ WARNING:NgdBuild:452 - logical net 'reg14_td<3>' has no driver
 WARNING:NgdBuild:452 - logical net 'reg14_td<2>' has no driver
 WARNING:NgdBuild:452 - logical net 'reg14_td<1>' has no driver
 WARNING:NgdBuild:452 - logical net 'reg14_td<0>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_Mask<1>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_Mask<0>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<63>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<62>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<61>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<60>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<59>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<58>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<57>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<56>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<55>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<54>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<53>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<52>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<51>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<50>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<49>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<48>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<47>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<46>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<45>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<44>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<43>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<42>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<41>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<40>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<39>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<38>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<37>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<36>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<35>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<34>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<33>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<32>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<31>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<30>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<29>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<28>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<27>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<26>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<25>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<24>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<23>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<22>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<21>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<20>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<19>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<18>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<17>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<16>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<15>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<14>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<13>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<12>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<11>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<10>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<9>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<8>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<7>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<6>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<5>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<4>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<3>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<2>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<1>' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_din<0>' has no driver
 WARNING:NgdBuild:452 - logical net 'reg01_tv' has no driver
 WARNING:NgdBuild:452 - logical net 'reg02_tv' has no driver
 WARNING:NgdBuild:452 - logical net 'reg03_tv' has no driver
@@ -540,6 +634,11 @@ WARNING:NgdBuild:452 - logical net 'reg11_tv' has no driver
 WARNING:NgdBuild:452 - logical net 'reg12_tv' has no driver
 WARNING:NgdBuild:452 - logical net 'reg13_tv' has no driver
 WARNING:NgdBuild:452 - logical net 'reg14_tv' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_sof' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_eof' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_v' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_FA' has no driver
+WARNING:NgdBuild:452 - logical net 'DDR_wr_Shift' has no driver
 WARNING:NgdBuild:452 - logical net
    'make4Lanes.pcieCore/pcie_2_0_i/PIPERX4CHARISKGT<1>' has no driver
 WARNING:NgdBuild:452 - logical net
@@ -1440,6 +1539,210 @@ WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<33>' has no
    driver
 WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<32>' has no
    driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<31>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<30>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<29>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<28>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<27>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<26>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<25>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<24>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<23>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<22>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<21>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<20>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<19>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<18>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<17>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<16>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<15>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<14>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<13>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<12>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<11>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<10>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<9>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<8>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<7>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<6>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<5>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<4>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<3>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<2>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<1>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/tRAM_dinB<0>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_Mask_A<1>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_Mask_A<0>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<63>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<62>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<61>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<60>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<59>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<58>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<57>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<56>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<55>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<54>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<53>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<52>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<51>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<50>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<49>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<48>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<47>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<46>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<45>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<44>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<43>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<42>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<41>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<40>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<39>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<38>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<37>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<36>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<35>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<34>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<33>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<32>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<31>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<30>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<29>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<28>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<27>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<26>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<25>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<24>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<23>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<22>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<21>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<20>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<19>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<18>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<17>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<16>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<15>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<14>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<13>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<12>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<11>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<10>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<9>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<8>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<7>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<6>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<5>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<4>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<3>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<2>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<1>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_A<0>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_sof_A' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_eof_A' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_v_A' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_Shift_A' has no
+   driver
 WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/dsDMA_dex_Tag<7>' has
    no driver
 WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/dsDMA_dex_Tag<6>' has
@@ -1450,6 +1753,146 @@ WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/usDMA_dex_Tag<6>' has
    no driver
 WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/usDMA_dex_Tag<5>' has
    no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_Mask_B<1>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_Mask_B<0>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<63>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<62>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<61>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<60>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<59>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<58>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<57>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<56>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<55>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<54>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<53>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<52>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<51>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<50>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<49>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<48>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<47>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<46>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<45>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<44>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<43>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<42>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<41>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<40>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<39>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<38>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<37>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<36>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<35>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<34>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<33>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<32>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<31>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<30>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<29>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<28>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<27>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<26>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<25>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<24>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<23>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<22>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<21>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<20>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<19>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<18>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<17>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<16>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<15>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<14>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<13>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<12>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<11>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<10>' has
+   no driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<9>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<8>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<7>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<6>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<5>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<4>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<3>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<2>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<1>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_din_B<0>' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_sof_B' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_eof_B' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_v_B' has no
+   driver
+WARNING:NgdBuild:452 - logical net 'theTlpControl/rx_Itf/DDR_wr_Shift_B' has no
+   driver
 WARNING:NgdBuild:452 - logical net
    'theTlpControl/rx_Itf/Downstream_DMA_Engine/dsDMA_PA_Loaded<63>' has no
    driver
@@ -1629,6 +2072,18 @@ WARNING:NgdBuild:452 - logical net
 WARNING:NgdBuild:452 - logical net
    'theTlpControl/rx_Itf/Downstream_DMA_Engine/dsDMA_PA_Var<32>' has no driver
 WARNING:NgdBuild:452 - logical net
+   'theTlpControl/rx_Itf/Downstream_DMA_Engine/dsDMA_PA_Var<31>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'theTlpControl/rx_Itf/Downstream_DMA_Engine/dsDMA_PA_Var<30>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'theTlpControl/rx_Itf/Downstream_DMA_Engine/dsDMA_PA_Var<29>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'theTlpControl/rx_Itf/Downstream_DMA_Engine/dsDMA_PA_Var<28>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'theTlpControl/rx_Itf/Downstream_DMA_Engine/dsDMA_PA_Var<27>' has no driver
+WARNING:NgdBuild:452 - logical net
+   'theTlpControl/rx_Itf/Downstream_DMA_Engine/dsDMA_PA_Var<26>' has no driver
+WARNING:NgdBuild:452 - logical net
    'theTlpControl/rx_Itf/Downstream_DMA_Engine/dsDMA_Snout_Length<12>' has no
    driver
 WARNING:NgdBuild:452 - logical net
@@ -1802,12 +2257,12 @@ Partition Implementation Status
 
 NGDBUILD Design Results Summary:
   Number of errors:     0
-  Number of warnings: 1190
+  Number of warnings: 1470
 
-Total memory usage is 632204 kilobytes
+Total memory usage is 337328 kilobytes
 
 Writing NGD file "v6pcieDMA.ngd" ...
-Total REAL time to NGDBUILD completion:  34 sec
-Total CPU time to NGDBUILD completion:   33 sec
+Total REAL time to NGDBUILD completion:  44 sec
+Total CPU time to NGDBUILD completion:   43 sec
 
 Writing NGDBUILD log file "v6pcieDMA.bld"...

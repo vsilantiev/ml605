@@ -1,23 +1,23 @@
 --------------------------------------------------------------------------------
--- Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+-- Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 --------------------------------------------------------------------------------
 --   ____  ____
 --  /   /\/   /
 -- /___/  \  /    Vendor: Xilinx
--- \   \   \/     Version: P.20131013
+-- \   \   \/     Version: P.58f
 --  \   \         Application: netgen
 --  /   /         Filename: v6_bram4096x64.vhd
--- /___/   /\     Timestamp: Thu Aug 28 18:02:27 2014
+-- /___/   /\     Timestamp: Sun Aug 31 22:35:17 2014
 -- \   \  /  \ 
 --  \___\/\___\
 --             
--- Command	: -w -sim -ofmt vhdl /home/vladimir/NEWDMA/ipcore_dir_ISE13.3/tmp/_cg/v6_bram4096x64.ngc /home/vladimir/NEWDMA/ipcore_dir_ISE13.3/tmp/_cg/v6_bram4096x64.vhd 
+-- Command	: -w -sim -ofmt vhdl C:/work/xilinx/ml605/ipcore_dir_ISE13.3/tmp/_cg/v6_bram4096x64.ngc C:/work/xilinx/ml605/ipcore_dir_ISE13.3/tmp/_cg/v6_bram4096x64.vhd 
 -- Device	: 6vlx240tff1156-1
--- Input file	: /home/vladimir/NEWDMA/ipcore_dir_ISE13.3/tmp/_cg/v6_bram4096x64.ngc
--- Output file	: /home/vladimir/NEWDMA/ipcore_dir_ISE13.3/tmp/_cg/v6_bram4096x64.vhd
+-- Input file	: C:/work/xilinx/ml605/ipcore_dir_ISE13.3/tmp/_cg/v6_bram4096x64.ngc
+-- Output file	: C:/work/xilinx/ml605/ipcore_dir_ISE13.3/tmp/_cg/v6_bram4096x64.vhd
 -- # of Entities	: 1
 -- Design Name	: v6_bram4096x64
--- Xilinx	: /opt/Xilinx/14.7/ISE_DS/ISE/
+-- Xilinx	: C:\Xilinx\14.5\ISE_DS\ISE\
 --             
 -- Purpose:    
 --     This VHDL netlist is a verification model and uses simulation 
@@ -43,7 +43,9 @@ use UNISIM.VPKG.ALL;
 entity v6_bram4096x64 is
   port (
     clka : in STD_LOGIC := 'X'; 
+    ena : in STD_LOGIC := 'X'; 
     clkb : in STD_LOGIC := 'X'; 
+    enb : in STD_LOGIC := 'X'; 
     wea : in STD_LOGIC_VECTOR ( 7 downto 0 ); 
     addra : in STD_LOGIC_VECTOR ( 11 downto 0 ); 
     dina : in STD_LOGIC_VECTOR ( 63 downto 0 ); 
@@ -1480,12 +1482,12 @@ NLW_U0_xst_blk_mem_generator_gnativebmg_native_blk_mem_gen_valid_cstr_ramloop_7_
       CLKBWRCLK => clkb,
       DBITERR => 
 NLW_U0_xst_blk_mem_generator_gnativebmg_native_blk_mem_gen_valid_cstr_ramloop_7_ram_r_v6_noinit_ram_TRUE_DP_SIMPLE_PRIM36_ram_DBITERR_UNCONNECTED,
-      ENARDEN => N0,
-      ENBWREN => N0,
+      ENARDEN => ena,
+      ENBWREN => enb,
       INJECTDBITERR => N1,
       INJECTSBITERR => N1,
       REGCEAREGCE => N1,
-      REGCEB => N0,
+      REGCEB => enb,
       RSTRAMARSTRAM => N1,
       RSTRAMB => N1,
       RSTREGARSTREG => N1,
@@ -1952,12 +1954,12 @@ NLW_U0_xst_blk_mem_generator_gnativebmg_native_blk_mem_gen_valid_cstr_ramloop_6_
       CLKBWRCLK => clkb,
       DBITERR => 
 NLW_U0_xst_blk_mem_generator_gnativebmg_native_blk_mem_gen_valid_cstr_ramloop_6_ram_r_v6_noinit_ram_TRUE_DP_SIMPLE_PRIM36_ram_DBITERR_UNCONNECTED,
-      ENARDEN => N0,
-      ENBWREN => N0,
+      ENARDEN => ena,
+      ENBWREN => enb,
       INJECTDBITERR => N1,
       INJECTSBITERR => N1,
       REGCEAREGCE => N1,
-      REGCEB => N0,
+      REGCEB => enb,
       RSTRAMARSTRAM => N1,
       RSTRAMB => N1,
       RSTREGARSTREG => N1,
@@ -2424,12 +2426,12 @@ NLW_U0_xst_blk_mem_generator_gnativebmg_native_blk_mem_gen_valid_cstr_ramloop_5_
       CLKBWRCLK => clkb,
       DBITERR => 
 NLW_U0_xst_blk_mem_generator_gnativebmg_native_blk_mem_gen_valid_cstr_ramloop_5_ram_r_v6_noinit_ram_TRUE_DP_SIMPLE_PRIM36_ram_DBITERR_UNCONNECTED,
-      ENARDEN => N0,
-      ENBWREN => N0,
+      ENARDEN => ena,
+      ENBWREN => enb,
       INJECTDBITERR => N1,
       INJECTSBITERR => N1,
       REGCEAREGCE => N1,
-      REGCEB => N0,
+      REGCEB => enb,
       RSTRAMARSTRAM => N1,
       RSTRAMB => N1,
       RSTREGARSTREG => N1,
@@ -2896,12 +2898,12 @@ NLW_U0_xst_blk_mem_generator_gnativebmg_native_blk_mem_gen_valid_cstr_ramloop_4_
       CLKBWRCLK => clkb,
       DBITERR => 
 NLW_U0_xst_blk_mem_generator_gnativebmg_native_blk_mem_gen_valid_cstr_ramloop_4_ram_r_v6_noinit_ram_TRUE_DP_SIMPLE_PRIM36_ram_DBITERR_UNCONNECTED,
-      ENARDEN => N0,
-      ENBWREN => N0,
+      ENARDEN => ena,
+      ENBWREN => enb,
       INJECTDBITERR => N1,
       INJECTSBITERR => N1,
       REGCEAREGCE => N1,
-      REGCEB => N0,
+      REGCEB => enb,
       RSTRAMARSTRAM => N1,
       RSTRAMB => N1,
       RSTREGARSTREG => N1,
@@ -3368,12 +3370,12 @@ NLW_U0_xst_blk_mem_generator_gnativebmg_native_blk_mem_gen_valid_cstr_ramloop_3_
       CLKBWRCLK => clkb,
       DBITERR => 
 NLW_U0_xst_blk_mem_generator_gnativebmg_native_blk_mem_gen_valid_cstr_ramloop_3_ram_r_v6_noinit_ram_TRUE_DP_SIMPLE_PRIM36_ram_DBITERR_UNCONNECTED,
-      ENARDEN => N0,
-      ENBWREN => N0,
+      ENARDEN => ena,
+      ENBWREN => enb,
       INJECTDBITERR => N1,
       INJECTSBITERR => N1,
       REGCEAREGCE => N1,
-      REGCEB => N0,
+      REGCEB => enb,
       RSTRAMARSTRAM => N1,
       RSTRAMB => N1,
       RSTREGARSTREG => N1,
@@ -3840,12 +3842,12 @@ NLW_U0_xst_blk_mem_generator_gnativebmg_native_blk_mem_gen_valid_cstr_ramloop_2_
       CLKBWRCLK => clkb,
       DBITERR => 
 NLW_U0_xst_blk_mem_generator_gnativebmg_native_blk_mem_gen_valid_cstr_ramloop_2_ram_r_v6_noinit_ram_TRUE_DP_SIMPLE_PRIM36_ram_DBITERR_UNCONNECTED,
-      ENARDEN => N0,
-      ENBWREN => N0,
+      ENARDEN => ena,
+      ENBWREN => enb,
       INJECTDBITERR => N1,
       INJECTSBITERR => N1,
       REGCEAREGCE => N1,
-      REGCEB => N0,
+      REGCEB => enb,
       RSTRAMARSTRAM => N1,
       RSTRAMB => N1,
       RSTREGARSTREG => N1,
@@ -4312,12 +4314,12 @@ NLW_U0_xst_blk_mem_generator_gnativebmg_native_blk_mem_gen_valid_cstr_ramloop_1_
       CLKBWRCLK => clkb,
       DBITERR => 
 NLW_U0_xst_blk_mem_generator_gnativebmg_native_blk_mem_gen_valid_cstr_ramloop_1_ram_r_v6_noinit_ram_TRUE_DP_SIMPLE_PRIM36_ram_DBITERR_UNCONNECTED,
-      ENARDEN => N0,
-      ENBWREN => N0,
+      ENARDEN => ena,
+      ENBWREN => enb,
       INJECTDBITERR => N1,
       INJECTSBITERR => N1,
       REGCEAREGCE => N1,
-      REGCEB => N0,
+      REGCEB => enb,
       RSTRAMARSTRAM => N1,
       RSTRAMB => N1,
       RSTREGARSTREG => N1,
@@ -4784,12 +4786,12 @@ NLW_U0_xst_blk_mem_generator_gnativebmg_native_blk_mem_gen_valid_cstr_ramloop_0_
       CLKBWRCLK => clkb,
       DBITERR => 
 NLW_U0_xst_blk_mem_generator_gnativebmg_native_blk_mem_gen_valid_cstr_ramloop_0_ram_r_v6_noinit_ram_TRUE_DP_SIMPLE_PRIM36_ram_DBITERR_UNCONNECTED,
-      ENARDEN => N0,
-      ENBWREN => N0,
+      ENARDEN => ena,
+      ENBWREN => enb,
       INJECTDBITERR => N1,
       INJECTSBITERR => N1,
       REGCEAREGCE => N1,
-      REGCEB => N0,
+      REGCEB => enb,
       RSTRAMARSTRAM => N1,
       RSTRAMB => N1,
       RSTREGARSTREG => N1,

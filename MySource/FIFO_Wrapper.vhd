@@ -53,7 +53,7 @@ entity eb_wrapper is
 			 --FIFO USER-->PCIe
           B2H_wr_clk        : IN  std_logic;
           B2H_wr_en         : IN  std_logic;
-          B2H_wr_din        : IN  std_logic_VECTOR(C_ASYNFIFO_WIDTH-1 downto 0);
+          B2H_wr_din        : IN  std_logic_VECTOR(64-1 downto 0);
           B2H_wr_pfull      : OUT std_logic;
           B2H_wr_full       : OUT std_logic;
           B2H_wr_data_count : OUT std_logic_VECTOR(C_EMU_FIFO_DC_WIDTH-1 downto 0); 
@@ -117,7 +117,7 @@ begin
   H2B_wr_data_count      <= H2B_wr_data_count_i;
 
   resized_H2B_wr_din  <= H2B_wr_din(64-1 downto 0);	
-  resized_B2H_wr_din  <= B2H_wr_din(64-1 downto 0);	
+  resized_B2H_wr_din  <= B2H_wr_din;--B2H_wr_din(64-1 downto 0);	
   
 
   H2B_rd_dout(71 downto 64) <= C_ALL_ZEROS(71 downto 64);

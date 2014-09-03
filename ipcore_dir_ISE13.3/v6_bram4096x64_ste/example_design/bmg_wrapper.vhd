@@ -86,7 +86,7 @@
 --    C_RST_PRIORITY_A            :  CE 
 --    C_RSTRAM_A                  :  0 
 --    C_INITA_VAL                 :  0 
---    C_HAS_ENA                   :  0 
+--    C_HAS_ENA                   :  1 
 --    C_HAS_REGCEA                :  0 
 --    C_USE_BYTE_WEA              :  1 
 --    C_WEA_WIDTH                 :  8 
@@ -100,7 +100,7 @@
 --    C_RST_PRIORITY_B            :  CE 
 --    C_RSTRAM_B                  :  0 
 --    C_INITB_VAL                 :  0 
---    C_HAS_ENB                   :  0 
+--    C_HAS_ENB                   :  1 
 --    C_HAS_REGCEB                :  0 
 --    C_USE_BYTE_WEB              :  1 
 --    C_WEB_WIDTH                 :  8 
@@ -223,6 +223,7 @@ ARCHITECTURE xilinx OF bmg_wrapper IS
   COMPONENT v6_bram4096x64_top IS
   PORT (
       --Port A
+    ENA            : IN STD_LOGIC;  --opt port
   
     WEA            : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
     ADDRA          : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
@@ -236,6 +237,7 @@ ARCHITECTURE xilinx OF bmg_wrapper IS
 
   
       --Port B
+    ENB            : IN STD_LOGIC;  --opt port
   
     WEB            : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
     ADDRB          : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
@@ -253,6 +255,7 @@ BEGIN
   bmg0 : v6_bram4096x64_top
     PORT MAP (
       --Port A
+      ENA        => ENA,
   
       WEA        => WEA,
       ADDRA      => ADDRA,
@@ -264,6 +267,7 @@ BEGIN
       CLKA       => CLKA,
   
       --Port B
+      ENB        => ENB, 
   
       WEB        => WEB,
       ADDRB      => ADDRB,
