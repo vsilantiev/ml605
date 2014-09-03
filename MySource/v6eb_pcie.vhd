@@ -64,7 +64,10 @@ entity v6pcieDMA is
 			 adc_data_in_n         : in  std_logic_vector(7 downto 0);
 			 adc_data_or_p         : in  std_logic;
 			 adc_data_or_n         : in  std_logic;
-			 delay_clk             : in  std_logic
+			 delay_clk             : in  std_logic;
+			 
+			   real_strobe_signal : out std_logic;
+			   real_soa_signal : out std_logic
 			 
 			 
           );                       
@@ -164,7 +167,11 @@ architecture Behavioral of v6pcieDMA is
 			fifowr_en    : OUT  std_logic;
 			fifodin      : OUT  std_logic_VECTOR(72-1 downto 0);
 			fifofull     : IN std_logic;
-			fifoprog_full:IN std_logic
+			fifoprog_full:IN std_logic;
+			
+			 real_strobe_signal : out std_logic;
+			 real_soa_signal : out std_logic;
+			 resetfifo : out std_logic
 		
 			
 			-- DMA status
@@ -581,6 +588,10 @@ end component;
 	signal   strobe_adc						 : std_logic;
 
 
+	
+	signal resetfifo : std_logic;
+			 
+
 --END PART ADC
 
 
@@ -604,7 +615,8 @@ end component;
            empty       : OUT std_logic;
 
            data_count  : OUT std_logic_VECTOR(C_EMU_FIFO_DC_WIDTH-1 downto 0);
-           rst         : IN  std_logic
+           rst         : IN  std_logic 
+			 
            );
    end component;
 
@@ -640,7 +652,8 @@ end component;
           B2H_rd_data_count : OUT std_logic_VECTOR(C_EMU_FIFO_DC_WIDTH-1 downto 0);
 			 B2H_rd_valid		 : OUT std_logic;	
           --RESET from PCIe
-			 rst               : IN  std_logic
+			 rst               : IN  std_logic;
+			  resetfifo	: in std_logic
           );
    end component;
 
@@ -1213,7 +1226,7 @@ begin
          reg14_rd 		=> reg14_rd,			
 			
 			
-			reset => trn_reset_n,
+			reset => sys_reset_n_c,
 			strobe_adc => strobe_adc,--,
 			--bram_wr_en 		=> user_wr_weA,
 			user_int_1o    => CTL_irq,
@@ -1225,7 +1238,11 @@ begin
 			fifowr_en     =>fifowr_en,
 			fifodin       =>fifodin,
 			fifofull      => fifofull,
-			fifoprog_full => fifoprog_full
+			fifoprog_full => fifoprog_full,
+			
+			 real_strobe_signal => real_strobe_signal,
+			 real_soa_signal => real_soa_signal,
+			resetfifo => resetfifo
 			
 			--DMA_Host2Board_Busy => DMA_Host2Board_Busy,
 			--DMA_Host2Board_Done => DMA_Host2Board_Done
@@ -1915,7 +1932,8 @@ make4Lanes: if pcieLanes = 4 generate
          B2H_rd_valid      	=> eb_valid  				,
          B2H_rd_data_count 	=> B2H_rd_data_count(C_EMU_FIFO_DC_WIDTH-1+1 downto 1) ,
 
-         rst        				=> eb_rst    
+         rst        				=> eb_rst    ,
+			resetfifo => resetfifo
          );
 
 

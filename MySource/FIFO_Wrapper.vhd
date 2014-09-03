@@ -65,7 +65,8 @@ entity eb_wrapper is
           B2H_rd_data_count : OUT std_logic_VECTOR(C_EMU_FIFO_DC_WIDTH-1 downto 0);
 			 B2H_rd_valid		 : OUT std_logic;	
           --RESET from PCIe
-			 rst               : IN  std_logic
+			 rst               : IN  std_logic;
+			 resetfifo	: in std_logic
           );
 end entity eb_wrapper;
 
@@ -108,6 +109,7 @@ architecture Behavioral of eb_wrapper is
   signal resized_B2H_wr_din  : std_logic_VECTOR(64-1 downto 0);
   signal resized_B2H_rd_dout : std_logic_VECTOR(64-1 downto 0);
 
+	signal resetfifomain:std_logic;
 
 begin
 
@@ -126,7 +128,7 @@ begin
   B2H_rd_dout(71 downto 64) <= C_ALL_ZEROS(71 downto 64);
   B2H_rd_dout(63 downto  0) <= resized_B2H_rd_dout;	
 
-
+  resetfifomain <= rst or resetfifo;
 
 
   --  ------------------------------------------
@@ -202,7 +204,7 @@ begin
          rd_data_count  => B2H_rd_data_count_wire  ,
          wr_data_count  => B2H_wr_data_count_wire  ,
 			valid          => B2H_rd_valid				,
-         rst        		=> rst      
+         rst        		=> resetfifomain      
          );
 
 end architecture Behavioral;

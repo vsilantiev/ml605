@@ -7,6 +7,10 @@
    <ItemView engineview="SynthesisOnly" guiview="Source" compilemode="AutoCompile" >
       <ClosedNodes>
          <ClosedNodesVersion>2</ClosedNodesVersion>
+         <ClosedNode>/v6pcieDMA - Behavioral C:|work|xilinx|ml605|MySource|v6eb_pcie.vhd/DDRs_ctrl_module - adctofifo - Behavioral</ClosedNode>
+         <ClosedNode>/v6pcieDMA - Behavioral C:|work|xilinx|ml605|MySource|v6eb_pcie.vhd/pcieCore - v6_pcie_v1_7_x4 - v6_pcie</ClosedNode>
+         <ClosedNode>/v6pcieDMA - Behavioral C:|work|xilinx|ml605|MySource|v6eb_pcie.vhd/pcie_userlogic_00_x0 - PCIe_UserLogic_00 - structural</ClosedNode>
+         <ClosedNode>/v6pcieDMA - Behavioral C:|work|xilinx|ml605|MySource|v6eb_pcie.vhd/theTlpControl - tlpControl - Behavioral</ClosedNode>
          <ClosedNode>/v6pcieDMA - Behavioral |home|vladimir|NEWDMA|MySource|v6eb_pcie.vhd/DDRs_ctrl_module - bram_DDRs_Control - Behavioral</ClosedNode>
          <ClosedNode>/v6pcieDMA - Behavioral |home|vladimir|NEWDMA|MySource|v6eb_pcie.vhd/pcieCore - v6_pcie_v1_7_x4 - v6_pcie/pcie_2_0_i - pcie_2_0_v6 - v6_pcie</ClosedNode>
          <ClosedNode>/v6pcieDMA - Behavioral |home|vladimir|NEWDMA|MySource|v6eb_pcie.vhd/pcie_userlogic_00_x0 - PCIe_UserLogic_00 - structural</ClosedNode>
@@ -25,53 +29,52 @@
          <ClosedNode>/v6pcieDMA - Behavioral |home|vladimir|pcie_sg_dma|branches|Virtex6|ML605_ISE13.3|MySource|v6eb_pcie.vhd/theTlpControl - tlpControl - Behavioral</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>Intrpt_Handle - Interrupts - Behavioral (/home/vladimir/NEWDMA/MySource/Interrupts.vhd)</SelectedItem>
+         <SelectedItem>v6pcieDMA - Behavioral (C:/work/xilinx/ml605/MySource/v6eb_pcie.vhd)</SelectedItem>
       </SelectedItems>
-      <ScrollbarPosition orientation="vertical" >6</ScrollbarPosition>
+      <ScrollbarPosition orientation="vertical" >8</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000002020000000100000001000000640000042a000000020000000000000000000000000200000064ffffffff0000008100000003000000020000042a0000000100000003000000000000000100000003</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001f2000000020000000000000000000000000200000064ffffffff000000810000000300000002000001f20000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>Intrpt_Handle - Interrupts - Behavioral (/home/vladimir/NEWDMA/MySource/Interrupts.vhd)</CurrentItem>
+      <CurrentItem>v6pcieDMA - Behavioral (C:/work/xilinx/ml605/MySource/v6eb_pcie.vhd)</CurrentItem>
    </ItemView>
    <ItemView engineview="SynthesisOnly" sourcetype="DESUT_VHDL_ARCHITECTURE" guiview="Process" >
       <ClosedNodes>
          <ClosedNodesVersion>1</ClosedNodesVersion>
          <ClosedNode>Configure Target Device</ClosedNode>
          <ClosedNode>Implement Design/Map</ClosedNode>
-         <ClosedNode>Implement Design/Place &amp; Route</ClosedNode>
+         <ClosedNode>Implement Design/Place &amp; Route/Back-annotate Pin Locations</ClosedNode>
+         <ClosedNode>Implement Design/Place &amp; Route/Generate IBIS Model</ClosedNode>
+         <ClosedNode>Implement Design/Place &amp; Route/Generate Post-Place &amp; Route Static Timing</ClosedNode>
          <ClosedNode>User Constraints</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem></SelectedItem>
+         <SelectedItem>Generate Programming File</SelectedItem>
       </SelectedItems>
-      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="vertical" >9</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000000000000000000027a000000010000000100000000000000000000000064ffffffff0000008100000000000000010000027a0000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem></CurrentItem>
+      <CurrentItem>Generate Programming File</CurrentItem>
    </ItemView>
    <ItemView guiview="File" >
       <ClosedNodes>
          <ClosedNodesVersion>1</ClosedNodesVersion>
       </ClosedNodes>
-      <SelectedItems>
-         <SelectedItem>/home/vladimir/NEWDMA/MySource/v6abb64Package_efifo_elink.vhd</SelectedItem>
-      </SelectedItems>
-      <ScrollbarPosition orientation="vertical" >17</ScrollbarPosition>
+      <SelectedItems/>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000000000000001000000000000000000000000000000000000074c000000040101000100000000000000000000000064ffffffff000000810000000000000004000003b800000001000000000000011b0000000100000000000000840000000100000000000001f50000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem>/home/vladimir/NEWDMA/MySource/v6abb64Package_efifo_elink.vhd</CurrentItem>
+      <CurrentItem>ABB3_pcie_4_lane_Emu_FIFO_elink.ucf</CurrentItem>
    </ItemView>
    <ItemView guiview="Library" >
       <ClosedNodes>
          <ClosedNodesVersion>1</ClosedNodesVersion>
-         <ClosedNode>work</ClosedNode>
       </ClosedNodes>
       <SelectedItems/>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000000000000001000000000000000000000000000000000000026b000000010001000100000000000000000000000064ffffffff0000008100000000000000010000026b0000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000000000000001000000000000000000000000000000000000027a000000010001000100000000000000000000000064ffffffff0000008100000000000000010000027a0000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
       <CurrentItem>work</CurrentItem>
    </ItemView>
@@ -85,7 +88,7 @@
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000000000000000000026b000000010000000100000000000000000000000064ffffffff0000008100000000000000010000026b0000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000000000000000000028b000000010000000100000000000000000000000064ffffffff0000008100000000000000010000028b0000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
       <CurrentItem></CurrentItem>
    </ItemView>
@@ -114,7 +117,7 @@
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000002df000000010000000100000000000000000000000064ffffffff000000810000000000000001000002df0000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000000000000000000028b000000010000000100000000000000000000000064ffffffff0000008100000000000000010000028b0000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
       <CurrentItem></CurrentItem>
    </ItemView>
@@ -131,7 +134,7 @@
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000001e3000000010000000100000000000000000000000064ffffffff000000810000000000000001000001e30000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000000000000000000028b000000010000000100000000000000000000000064ffffffff0000008100000000000000010000028b0000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
       <CurrentItem></CurrentItem>
    </ItemView>
@@ -144,7 +147,7 @@
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000002df000000010000000100000000000000000000000064ffffffff000000810000000000000001000002df0000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000000000000000000028b000000010000000100000000000000000000000064ffffffff0000008100000000000000010000028b0000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
       <CurrentItem></CurrentItem>
    </ItemView>
@@ -180,18 +183,20 @@
          <ClosedNode>ISim Simulator</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem></SelectedItem>
+         <SelectedItem/>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000002df000000010000000100000000000000000000000064ffffffff000000810000000000000001000002df0000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem></CurrentItem>
+      <CurrentItem/>
    </ItemView>
    <ItemView engineview="BehavioralSim" guiview="Source" compilemode="AutoCompile" >
       <ClosedNodes>
          <ClosedNodesVersion>2</ClosedNodesVersion>
+         <ClosedNode>/bram_DDRs_Control - Behavioral C:|work|xilinx|ml605|MySource|bram_DDRs_Control.vhd</ClosedNode>
          <ClosedNode>/tf64_pcie_trn |home|vladimir|NEWDMA|MySim|tf64_pcie_trn.v</ClosedNode>
+         <ClosedNode>/v6pcieDMA - Behavioral C:|work|xilinx|ml605|MySource|v6eb_pcie.vhd</ClosedNode>
          <ClosedNode>/v6pcieDMA - Behavioral |home|vladimir|NEWDMA|MySource|v6eb_pcie.vhd/DDRs_ctrl_module - bram_DDRs_Control_loopback - Behavioral</ClosedNode>
          <ClosedNode>/v6pcieDMA - Behavioral |home|vladimir|NEWDMA|MySource|v6eb_pcie.vhd/pcieCore - v6_pcie_v1_7_x4 - v6_pcie</ClosedNode>
          <ClosedNode>/v6pcieDMA - Behavioral |home|vladimir|NEWDMA|MySource|v6eb_pcie.vhd/pcie_userlogic_00_x0 - PCIe_UserLogic_00 - structural</ClosedNode>
@@ -200,13 +205,13 @@
          <ClosedNode>/v6pcieDMA - Behavioral |home|vladimir|NEWDMA|MySource|v6eb_pcie.vhd/theTlpControl - tlpControl - Behavioral</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>pcieCore - v6_pcie_v1_7_x4 - v6_pcie (/home/vladimir/NEWDMA/ipcore_dir_ISE13.3/v6_pcie_v1_7_x4/source/v6_pcie_v1_7_x4.vhd)</SelectedItem>
+         <SelectedItem>tf64_pcie_trn (C:/work/xilinx/ml605/MySim/tf64_pcie_trn.v)</SelectedItem>
       </SelectedItems>
-      <ScrollbarPosition orientation="vertical" >2</ScrollbarPosition>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000003d2000000020000000000000000000000000200000064ffffffff000000810000000300000002000003d20000000100000003000000000000000100000003</ViewHeaderState>
-      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem>pcieCore - v6_pcie_v1_7_x4 - v6_pcie (/home/vladimir/NEWDMA/ipcore_dir_ISE13.3/v6_pcie_v1_7_x4/source/v6_pcie_v1_7_x4.vhd)</CurrentItem>
+      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000002020000000100000001000000640000026b000000020000000000000000000000000200000064ffffffff0000008100000003000000020000026b0000000100000003000000000000000100000003</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
+      <CurrentItem>tf64_pcie_trn (C:/work/xilinx/ml605/MySim/tf64_pcie_trn.v)</CurrentItem>
    </ItemView>
    <ItemView engineview="BehavioralSim" sourcetype="" guiview="Process" >
       <ClosedNodes>
@@ -219,7 +224,7 @@
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000002df000000010000000100000000000000000000000064ffffffff000000810000000000000001000002df0000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000000000000000000028b000000010000000100000000000000000000000064ffffffff0000008100000000000000010000028b0000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
       <CurrentItem></CurrentItem>
    </ItemView>
@@ -233,7 +238,7 @@
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000002df000000010000000100000000000000000000000064ffffffff000000810000000000000001000002df0000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000000000000000000028b000000010000000100000000000000000000000064ffffffff0000008100000000000000010000028b0000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
       <CurrentItem></CurrentItem>
    </ItemView>
@@ -337,12 +342,12 @@
          <ClosedNodesVersion>1</ClosedNodesVersion>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem></SelectedItem>
+         <SelectedItem/>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000002df000000010000000100000000000000000000000064ffffffff000000810000000000000001000002df0000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem></CurrentItem>
+      <CurrentItem/>
    </ItemView>
 </Project>

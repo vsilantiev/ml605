@@ -67,9 +67,7 @@ module ADC_emul(
 					 output reg13_rv,
 					 output reg14_rd, 
 					 output reg14_rv,
-					 
-				//	 input dma_host2board_busy, 
-				//	 input dma_host2board_done,
+					  
 					 
                 input reset,
                 output  strobe_adc,
@@ -83,7 +81,13 @@ module ADC_emul(
 					output fifowr_en ,  
 					output fifodin  ,   
 					input  fifofull ,   
-					input  fifoprog_full
+					input  fifoprog_full,
+					
+					
+					output real_strobe_signal,
+					output real_soa_signal,
+					output resetfifo
+					
 			
                 );
 //                               
@@ -135,14 +139,39 @@ parameter WIDTH=16;
 //	 reg [31:0] r01_td;
 //	 reg 
 	 
+	 
+	 // счетчик строба длительности
+	 reg [31:0] strobe_counter;
+	 // счетчик выхода SOA
+	 reg [31:0]	soa_counter;
+	 
+	 
+	 // счетчик длины рефлектограммы
+	 reg [31:0] reflength_counter;
+	 // -- длина рефлектограммы в метрах 
+	 // -- от длины рассчитывается частота
+	 // -- прошел длину - запустил строб
+	 reg [31:0] reg01_rd_current_reflength;
 	 reg [31:0] reg01_rd;
 	 reg reg01_rv;
+	 
+	 // если workstatus = 1 тогда запускаем заполнение FIFO, иначе останавливаем и очищаем все
+	 reg reg02_rd_work_status;
+	
 	 reg [31:0] reg02_rd;
 	 reg reg02_rv;
+	 
+	 // длина строба
+	 reg [31:0] reg03_strobe_length_cur;
 	 reg [31:0] reg03_rd;
 	 reg reg03_rv;
+	 
+	 // длительность soa импульса
+	 reg [31:0] reg04_soa_length_cur;
 	 reg [31:0] reg04_rd;
 	 reg reg04_rv;
+	 
+	 
 	 reg [31:0] reg05_rd;
 	 reg reg05_rv;
 	 reg [31:0] reg06_rd;
@@ -233,21 +262,21 @@ parameter WIDTH=16;
 	//
 	
 	reg                 adc_dmode_m1 = 'd0;
-    reg                 adc_dmode = 'd1;
-    reg     [7:0]       adc_data_n_d = 'd0;
-    reg     [7:0]       adc_dmux_a = 'd0;
-    reg     [7:0]       adc_dmux_b = 'd0;
+   reg                 adc_dmode = 'd1;
+   reg     [7:0]       adc_data_n_d = 'd0;
+   reg     [7:0]       adc_dmux_a = 'd0;
+   reg     [7:0]       adc_dmux_b = 'd0;
     
 	reg     [7:0]       delay_rst_cnt = 'd0;
 	
-    reg     [7:0]       adc_data_p = 'd0;
-    reg     [7:0]       adc_data_n = 'd0;
+   reg     [7:0]       adc_data_p = 'd0;
+   reg     [7:0]       adc_data_n = 'd0;
 	reg     [15:0]      real_data;
 	
 	reg                 adc_or ='d0;
 	genvar              l_inst;
 	
-	 reg curstrobe  = 0;
+	reg curstrobe  = 0;
 				
 	reg adcclock;
 	
@@ -258,7 +287,11 @@ parameter WIDTH=16;
 	wire  fifofull;
 	wire  fifoprog_full;
 					
-					
+	
+	reg real_strobe_signal;
+	reg real_soa_signal;	
+	reg resetfifo;
+	
 //
 /*Gluing data ADC*/
 //
@@ -312,46 +345,223 @@ always @ (posedge clk)
 
 
 
+ 
+  always @(posedge clk) begin 
+  
+   if (!reset) begin
+	
+      
+		reg01_rd_current_reflength <= 'd60000; // 60 km
+		reg02_rd_work_status <= 0;	// 0 not work
+		reg03_strobe_length_cur <= 'd630;	// 7500 ns
+		reg04_soa_length_cur <= 'd8;	// 80 ns
+		
+    end 
+	 else
+
+	 begin
+	 
+	 /*
+	  // счетчик строба длительности
+	 reg [31:0] strobe_counter;
+	 // счетчик выхода SOA
+	 reg [31:0]	soa_counter;
+	 
+	 
+	 // счетчик длины рефлектограммы
+	 reg [31:0] reflength_counter;
+	 // -- длина рефлектограммы в метрах 
+	 // -- от длины рассчитывается частота
+	 // -- прошел длину - запустил строб
+	 reg [31:0] reg01_rd_current_reflength;
+	 reg [31:0] reg01_rd;
+	 reg reg01_rv;
+	 
+	 // если workstatus = 1 тогда запускаем заполнение FIFO, иначе останавливаем и очищаем все
+	 reg reg02_rd_work_status;
+	 reg [31:0] reg02_rd;
+	 reg reg02_rv;
+	 
+	 // длина строба
+	 reg [31:0] reg03_strobe_length_cur;
+	 reg [31:0] reg03_rd;
+	 reg reg03_rv;
+	 
+	 // длительность soa импульса
+	 reg [31:0] reg04_soa_length_cur;
+	 reg [31:0] reg04_rd;
+	 reg reg04_rv;
+	 */
+	 
+	 if ( reg01_tv == 1)
+	 begin
+		reg01_rd_current_reflength <= reg01_td;
+	 end
+	  
+      reg01_rd <= reg01_rd_current_reflength; // 44
+	   reg01_rv <=  1;//reg01_tv;//1; // Reg 44
+	
+	 if ( reg02_tv == 1)
+	 begin
+	   if (reg02_td > 'd0)
+		 
+			reg02_rd_work_status <=1;
+		 else
+			reg02_rd_work_status <= 0;
+		
+	 end 
+		
+		reg02_rd <= reg02_rd_work_status; // state IRQ to reg 
+	   reg02_rv <= 1; //45
+		
+		
+	 if ( reg03_tv == 1)
+	 begin
+		reg03_strobe_length_cur <= reg03_td;
+	 end
+		
+		reg03_rd <= reg03_strobe_length_cur;//count_irq; // 
+	   reg03_rv <= 1;	//46	
+		
+	  if ( reg04_tv == 1)
+	  begin
+	  	reg04_soa_length_cur <= reg04_td; //
+	  end
+		
+		reg04_rd <= reg04_soa_length_cur;//count_irq; // 
+	   reg04_rv <= 1;	//47	
+		
+		if (reg05_tv == 1)
+		begin
+			resetfifo <=  1;
+		end
+		else
+		begin
+			resetfifo <=  0;
+		end
+      reg05_rd <= bram_addr;  //48
+	   reg05_rv <= 1;//1;
+		reg06_rd <= fifofull; //49
+	   reg06_rv <= 1;
+		reg07_rd <= real_data_out; //50
+	   reg07_rv <= 1;		
+		reg08_rd <= real_data; //51
+	   reg08_rv <= 1;
+      reg09_rd <= count_ref; //52
+	   reg09_rv <= 1;//1;
+		reg10_rd <= count_irq; //53
+	   reg10_rv <= 1;
+		reg11_rd <= 'd1000;
+	   reg11_rv <= 1;		
+		reg12_rd <= 'd1000;
+	   reg12_rv <= 1;
+      reg13_rd <= 'd1000;
+	   reg13_rv <= 1;//1;
+		
+		  
+     end
+  end
+
   always @(posedge clk) begin 
     if (!reset) begin
       bram_addr <= 0;
 	   count <= 0;
 		fifowr_en<=0;
-    end else begin
-      count <= count + 1;  
 		
-      case (count)
-	     0: 
+		strobe_counter <= 'd0;
+	   soa_counter <= 'd0;
+		reflength_counter <= 'd0;
+		
+		real_strobe_signal <= 0;
+	   real_soa_signal <= 0;
+		
+		
+    end else begin
+	    
+		if ( reg02_rd_work_status == 0 )
 			begin
-				real_data_out[15:0] <= real_data[15:0];	
-				fifowr_en <= 0;				
-		   end
-		  1:
-				begin
-				real_data_out[31:16] <= real_data[15:0];
-				 fifowr_en <= 0;
-				 end
-		  2: 
-				begin
-				real_data_out[47:32] <= real_data[15:0]; 
-				 fifowr_en <= 0;
-				 end
-		  3: begin
-		       real_data_out[63:48] <= real_data[15:0];
-		       bram_addr <= bram_addr + 1;
-				 count_ref <= count_ref + 1;
+				count <= 0;
+				strobe_counter <=0;
+				soa_counter <=0;
+				reflength_counter <=0;
 				
-				 
-				 fifowr_en<= ~fifofull;
-				   
-				  
+				real_strobe_signal <= 0;
+				real_soa_signal <= 0;
+		
+			end
+		else
+	 
+		begin 
+			count <= count + 1;  
+			
+			if (reflength_counter == reg01_rd_current_reflength  )
+			begin
+				reflength_counter <= 0;
+				strobe_counter <=0;
+				soa_counter <=0; 
+				real_strobe_signal <= 1;
+				real_soa_signal <= 1;
+			
+			end
+			else
+			begin
+				reflength_counter <= reflength_counter +1;
+				if ( strobe_counter <= reg03_strobe_length_cur )
+				begin
+						strobe_counter <= strobe_counter + 1;
+						real_strobe_signal <= 1;
+				end
+				else
+				begin
+					real_strobe_signal <= 0; 
+				end
 				
-				//strobe_adc <= 1;
+				
+				if ( soa_counter <= reg04_soa_length_cur )
+				begin
+						soa_counter <= soa_counter + 1;
+						real_soa_signal <= 1;
+				end
+				else
+				begin
+						real_soa_signal <= 0; 
+				end
+				
+			end
+			
+			
+			case (count)
+			  0: 
+				begin
+					real_data_out[15:0] <= real_data[15:0];	
+					fifowr_en <= 0;				
+				end
+			  1:
+					begin
+					real_data_out[31:16] <= real_data[15:0];
+					 fifowr_en <= 0;
+					 end
+			  2: 
+					begin
+					real_data_out[47:32] <= real_data[15:0]; 
+					 fifowr_en <= 0;
+					 end
+			  3: begin
+					 real_data_out[63:48] <= real_data[15:0];
+					 bram_addr <= bram_addr + 1;
+					 count_ref <= count_ref + 1;
 					
-		     end
-	   endcase
-		 fifodin<= "0000" & "0" & "0" & "00" &   real_data_out[32-1 :0] & real_data_out[64-1 : 32];
+					 fifowr_en<= ~fifofull;
+						
+						
+						
+				  end
+				endcase
+			
+			
 				
+			
+		end
     end	 
   end
     
@@ -370,59 +580,14 @@ always @ (posedge clk)
    
   always @(posedge clk) begin
   //  count_irq <= 0;
-    if (count_ref <= 10) 
-	     user_int_1o <= 1;
-     else		 
-		  user_int_1o <= 0;
+  //  if (count_ref <= 10) 
+	//     user_int_1o <= 1;
+   //  else		 
+	//	  user_int_1o <= 0;
 	 
   end
 	
-	 
-  always @(posedge clk) begin 
-    //begin
-      reg01_rd <= 'd1000; // 44
-	   reg01_rv <=  1;//reg01_tv;//1; // Reg 44
-		
-		
-		reg02_rd <= user_int_3o; // state IRQ to reg 
-	   reg02_rv <= 1; //45
-		reg03_rd <= 'd1000;//count_irq; // 
-	   reg03_rv <= 1;	//46	
-		reg04_rd <= strobe_adc;
-	   reg04_rv <= 1;  //47
-      reg05_rd <= bram_addr;  //48
-	   reg05_rv <= 1;//1;
-		reg06_rd <= clk; //49
-	   reg06_rv <= 1;
-		reg07_rd <= real_data_out; //50
-	   reg07_rv <= 1;		
-		reg08_rd <= real_data; //51
-	   reg08_rv <= 1;
-      reg09_rd <= count_ref; //52
-	   reg09_rv <= 1;//1;
-		reg10_rd <= count_irq; //53
-	   reg10_rv <= 1;
-		reg11_rd <= 'd1000;
-	   reg11_rv <= 1;		
-		reg12_rd <= 'd1000;
-	   reg12_rv <= 1;
-      reg13_rd <= 'd1000;
-	   reg13_rv <= 1;//1;
-		
-		 
-	   
-		
-		if (reg14_tv == 1)
-		begin
-			reg14_rdCur <= reg14_td;
-			
-		end
-		reg14_rd <= reg14_rdCur ;
-		reg14_rv <= 1;
-      //reg01_rd <= reg01_td;
-		//reg01_rv <= reg01_tv;
-    //end
-  end
+	
 //	
 /*Strobe signal*/
 //	

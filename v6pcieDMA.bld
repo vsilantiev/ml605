@@ -2,9 +2,9 @@ Release 14.5 ngdbuild P.58f (nt64)
 Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 
 Command Line: C:\Xilinx\14.5\ISE_DS\ISE\bin\nt64\unwrapped\ngdbuild.exe
--intstyle ise -dd _ngo -sd MyUserLogic/UserLogic_00 -sd ipcore_dir_ISE13.3 -sd
-ipcore_dir -nt timestamp -uc MyUCF/ABB3_pcie_4_lane_Emu_FIFO_elink.ucf -p
-xc6vlx240t-ff1156-1 v6pcieDMA.ngc v6pcieDMA.ngd
+-intstyle ise -dd _ngo -sd MyUserLogic/UserLogic_00 -sd ipcore_dir -sd
+ipcore_dir_ISE13.3 -nt timestamp -uc MyUCF/ABB3_pcie_4_lane_Emu_FIFO_elink.ucf
+-p xc6vlx240t-ff1156-1 v6pcieDMA.ngc v6pcieDMA.ngd
 
 Reading NGO file "C:/work/xilinx/ml605/v6pcieDMA.ngc" ...
 Loading design module "ipcore_dir_ISE13.3/v6_mBuf_128x72.ngc"...
@@ -12,7 +12,7 @@ Loading design module "ipcore_dir_ISE13.3/v6_sfifo_15x128.ngc"...
 Loading design module "MyUserLogic/UserLogic_00/user_logic_cw.ngc"...
 Loading design module "MyUserLogic/UserLogic_00/inout_logic_cw.ngc"...
 Loading design module "ipcore_dir/fifomodule.ngc"...
-Loading design module "ipcore_dir_ISE13.3/v6_prime_fifo_plain.ngc"...
+Loading design module "ipcore_dir/v6_prime_fifo_plain.ngc"...
 Loading design module "ipcore_dir_ISE13.3/v6_eb_fifo_counted_resized.ngc"...
 Gathering constraint information from source properties...
 Done.
@@ -74,166 +74,6 @@ WARNING:NgdBuild:486 - Attribute "SIM_DEVICE" is not allowed on symbol
    inst_extd/gonep.inst_prim/gf36e1_inst.sngfifo36e1" of type "FIFO36E1".  This
    attribute will be ignored.
 WARNING:NgdBuild:452 - logical net 'cfg_dcommand<15>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<31>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<30>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<29>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<28>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<27>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<26>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<25>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<24>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<23>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<22>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<21>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<20>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<19>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<18>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<17>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<16>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<15>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<14>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<13>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<12>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<11>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<10>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<9>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<8>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<7>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<6>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<5>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<4>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<3>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<2>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<1>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg14_rd<0>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<31>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<30>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<29>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<28>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<27>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<26>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<25>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<24>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<23>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<22>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<21>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<20>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<19>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<18>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<17>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<16>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<15>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<14>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<13>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<12>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<11>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<10>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<9>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<8>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<7>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<6>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<5>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<4>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<3>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<2>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<1>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_td<0>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<31>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<30>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<29>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<28>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<27>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<26>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<25>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<24>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<23>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<22>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<21>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<20>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<19>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<18>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<17>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<16>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<15>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<14>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<13>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<12>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<11>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<10>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<9>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<8>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<7>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<6>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<5>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<4>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<3>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<2>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<1>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_td<0>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<31>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<30>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<29>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<28>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<27>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<26>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<25>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<24>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<23>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<22>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<21>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<20>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<19>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<18>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<17>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<16>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<15>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<14>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<13>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<12>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<11>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<10>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<9>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<8>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<7>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<6>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<5>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<4>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<3>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<2>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<1>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_td<0>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<31>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<30>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<29>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<28>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<27>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<26>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<25>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<24>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<23>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<22>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<21>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<20>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<19>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<18>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<17>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<16>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<15>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<14>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<13>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<12>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<11>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<10>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<9>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<8>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<7>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<6>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<5>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<4>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<3>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<2>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<1>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_td<0>' has no driver
 WARNING:NgdBuild:452 - logical net 'reg05_td<31>' has no driver
 WARNING:NgdBuild:452 - logical net 'reg05_td<30>' has no driver
 WARNING:NgdBuild:452 - logical net 'reg05_td<29>' has no driver
@@ -620,11 +460,6 @@ WARNING:NgdBuild:452 - logical net 'DDR_wr_din<3>' has no driver
 WARNING:NgdBuild:452 - logical net 'DDR_wr_din<2>' has no driver
 WARNING:NgdBuild:452 - logical net 'DDR_wr_din<1>' has no driver
 WARNING:NgdBuild:452 - logical net 'DDR_wr_din<0>' has no driver
-WARNING:NgdBuild:452 - logical net 'reg01_tv' has no driver
-WARNING:NgdBuild:452 - logical net 'reg02_tv' has no driver
-WARNING:NgdBuild:452 - logical net 'reg03_tv' has no driver
-WARNING:NgdBuild:452 - logical net 'reg04_tv' has no driver
-WARNING:NgdBuild:452 - logical net 'reg05_tv' has no driver
 WARNING:NgdBuild:452 - logical net 'reg06_tv' has no driver
 WARNING:NgdBuild:452 - logical net 'reg07_tv' has no driver
 WARNING:NgdBuild:452 - logical net 'reg08_tv' has no driver
@@ -2257,12 +2092,12 @@ Partition Implementation Status
 
 NGDBUILD Design Results Summary:
   Number of errors:     0
-  Number of warnings: 1470
+  Number of warnings: 1305
 
-Total memory usage is 337328 kilobytes
+Total memory usage is 341296 kilobytes
 
 Writing NGD file "v6pcieDMA.ngd" ...
-Total REAL time to NGDBUILD completion:  44 sec
+Total REAL time to NGDBUILD completion:  45 sec
 Total CPU time to NGDBUILD completion:   43 sec
 
 Writing NGDBUILD log file "v6pcieDMA.bld"...
