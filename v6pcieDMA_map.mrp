@@ -11,7 +11,7 @@ Target Device  : xc6vlx240t
 Target Package : ff1156
 Target Speed   : -1
 Mapper Version : virtex6 -- $Revision: 1.55 $
-Mapped Date    : Wed Sep 03 22:15:25 2014
+Mapped Date    : Thu Sep 04 08:13:31 2014
 
 Design Summary
 --------------
@@ -106,9 +106,9 @@ Specific Feature Utilization:
   Number of RPM macros:           14
 Average Fanout of Non-Clock Nets:                4.02
 
-Peak Memory Usage:  970 MB
-Total REAL time to MAP completion:  7 mins 54 secs 
-Total CPU time to MAP completion:   7 mins 50 secs 
+Peak Memory Usage:  989 MB
+Total REAL time to MAP completion:  7 mins 47 secs 
+Total CPU time to MAP completion:   7 mins 43 secs 
 
 Table of Contents
 -----------------

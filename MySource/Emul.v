@@ -171,7 +171,7 @@ parameter WIDTH=16;
 	 reg [31:0] reg04_rd;
 	 reg reg04_rv;
 	 
-	 
+	 // принудительная очистка FIFO
 	 reg [31:0] reg05_rd;
 	 reg reg05_rv;
 	 reg [31:0] reg06_rd;

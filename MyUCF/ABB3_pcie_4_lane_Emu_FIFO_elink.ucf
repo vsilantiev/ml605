@@ -191,8 +191,8 @@ NET adc_data_in_p<7> LOC = "G32" | DIFF_TERM = "TRUE" | IOSTANDARD = "LVDS_25";
 NET adc_data_in_n<7> LOC = "H32" | DIFF_TERM = "TRUE" | IOSTANDARD = "LVDS_25";
 
 
-NET real_strobe_signal LOC = "V34" ;
-NET real_soa_signal LOC = "W34" ;
+NET real_strobe_signal LOC = "V34" | IOSTANDARD = "LVCMOS25";   
+NET real_soa_signal LOC = "W34" | IOSTANDARD = "LVCMOS25";  
 
 NET "adc_clk_in_p" TNM_NET = "adc_clk_in_p";
 TIMESPEC "TS_adc_clk_in_p" = PERIOD "adc_clk_in_p" 300 MHz;
